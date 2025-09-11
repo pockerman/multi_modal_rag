@@ -18,7 +18,7 @@ def find_defect(defects: list[dict], label: str) -> dict | None:
     for defect in defects:
         if defect['label'] == label:
             return defect
-    return None
+    return 'INVALID'
 
 
 def find_image_description(images: list[dict], img_source: str) -> str:
@@ -26,7 +26,7 @@ def find_image_description(images: list[dict], img_source: str) -> str:
         if img["source"] == img_source:
             return img["description"]
 
-    return None
+    return 'INVALID'
 
 
 def embed_image_from_file(img_path: Path, image_id: str, image_metadata: list[dict],
@@ -41,25 +41,17 @@ def embed_image_from_file(img_path: Path, image_id: str, image_metadata: list[di
 
     if normalize_img:
         img_embedding = normalize(image_encoder.encode(image))
-
-        chroma_db.add(
-            repository_name=repository_name,
-            ids=[image_id],
-            embeddings=[img_embedding.tolist()],
-            metadatas=image_metadata,
-            documents=documents  # store path for reference
-        )
-
+        img_embedding = img_embedding.tolist()
     else:
         img_embedding = image_encoder.encode(image)
 
-        image_encoder.add(
+    chroma_db.add(
             repository_name=repository_name,
             ids=[image_id],
             embeddings=[img_embedding],
             metadatas=image_metadata,
-            documents=documents  # store path for reference
-        )
+            documents=documents
+    )
 
 
 def embed_text(text: str, text_id: str, text_encoder, chroma_db: ChromaDBHttpWrapper,
@@ -75,9 +67,13 @@ def embed_text(text: str, text_id: str, text_encoder, chroma_db: ChromaDBHttpWra
 
 if __name__ == '__main__':
     DATA_PATH = Path('./data')
+    IMAGES_PATH = DATA_PATH / "hull_defects_imgs"
 
     hull_defects = read_json(DATA_PATH / "hull_defects.json")
     chromadb_wrapper = ChromaDBHttpWrapper(host='0.0.0.0', port=8003)
+
+    chromadb_wrapper.delete_collection('defects_images')
+    chromadb_wrapper.delete_collection('defects_texts')
 
     chromadb_wrapper.create_collection('defects_images')
     chromadb_wrapper.create_collection('defects_texts')
@@ -88,12 +84,12 @@ if __name__ == '__main__':
     defects = hull_defects['defects']
 
     # get the images
-    dirs = os.listdir(DATA_PATH / "hull_defects_imgs")
+    dirs = os.listdir(IMAGES_PATH)
 
     for dir in dirs:
 
         print(f'Processing dir={dir}')
-        dir_path = DATA_PATH / dir
+        dir_path = IMAGES_PATH / dir
 
         # get the defect description e.t.c for the
         # images in this directory
@@ -112,14 +108,20 @@ if __name__ == '__main__':
                 img_id = uuid.uuid4().hex
                 img_path = dir_path / img
 
+                recommendations = ",".join(defect_info["recommendations"]) if defect_info[
+                                                                                  "recommendations"] is not None else "INVALID"
+
+                synonyms = ",".join(defect_info["synonyms"]) if defect_info["synonyms"] else "INVALID"
+                material = ",".join(defect_info["material"]) if defect_info["material"] else "INVALID"
+
                 image_metadata = [
                     {"label": defect_info["label"],
                      "name": defect_info["name"],
-                     "synonyms": defect_info["synonyms"],
-                     "material": defect_info["material"],
-                     "description": defect_info["description"],
-                     "visual-cues": defect_info["visual-cues"],
-                     "recommendations": defect_info["recommendations"]
+                     "synonyms": synonyms,
+                     "material": material,
+                     "description": defect_info["description"] if defect_info["description"] else "INVALID",
+                     "visual-cues": defect_info["visual-cues"] if defect_info["visual-cues"] else "INVALID",
+                     "recommendations": recommendations
                      }
                 ]
 
@@ -129,19 +131,18 @@ if __name__ == '__main__':
                 if images:
                     img_description = find_image_description(images=images, img_source=dir + "/" + img)
                     image_documents.append(img_description)
+                    text_data = {
+                            "description": defect_info["description"] if defect_info["description"] else "INVALID",
+                            "visual-cues": defect_info["visual-cues"] if defect_info["visual-cues"] else "INVALID",
+                            "recommendations": recommendations
+                    }
 
-                    text_meta=[{
-                        "description": defect_info["description"],
-                        "visual-cues": defect_info["visual-cues"],
-                        "recommendations": defect_info["recommendations"]
-                    }]
+                    text_meta = [text_data]
                     embed_text(text_id=img_id, text=img_description,
                                text_encoder=clip_model, repository_name='defects_texts',
-                               chroma_db=chromadb_wrapper, documents=[],
+                               chroma_db=chromadb_wrapper, documents=[img_description],
                                text_metadata=text_meta)
 
                 embed_image_from_file(image_id=img_id, img_path=img_path, image_encoder=clip_model,
                                       repository_name='defects_images', image_metadata=image_metadata,
                                       chroma_db=chromadb_wrapper, documents=image_documents)
-
-

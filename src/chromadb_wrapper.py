@@ -20,6 +20,7 @@ class ChromaDBHttpWrapper:
             metadatas: Optional[Any] = None,
             documents: Optional[Any] = None) -> Any:
         collection = self._chroma_client.get_collection(repository_name)
+
         collection.add(ids=ids,
                        embeddings=embeddings, metadatas=metadatas, documents=documents)
         return self
