@@ -4,9 +4,7 @@ from pathlib import Path
 import os
 import numpy as np
 from PIL import Image
-import json
 
-from src.hybrid_weighted_fusion import HybridWeightedFusion
 from src.utils import read_json
 from src.chromadb_wrapper import ChromaDBHttpWrapper
 
