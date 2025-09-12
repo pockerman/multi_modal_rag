@@ -1,12 +1,12 @@
-# Weighted fusion & multi-step retrieval of multi-modal RAG
+# Document fusion & multi-step retrieval of multi-modal RAG
 
-Toy implementation of hybrid weighted fusion and multi-step retrieval for multi-modal RAG with images and text modalities.
+Toy implementation of hybrid document fusion and multi-step retrieval for multi-modal RAG with images and text modalities.
 The implementation that is used is as follows:
 
 1. Indexing: For each image produce one or more representations (embeddings, captions, metadata). Two collections are used one for the images and one for the description of the image
 2. Multi-stage retrieval. 
    1. Retrieve: Get the top K images and image descriptions i.e 2 DB queries
-   2. Fuse: Merge candidate sets, normalize scores, compute fused score (weighted) 
+   2. Fuse: Merge candidate sets, normalize scores, compute fused score (weighted and RRF) 
    3. Re-rank: Run cross-modal re-ranker (e.g., cross-encoder that takes query + image) over top N fused candidates; final ranking from re-rank or fused+rerank.
 3. Generate: top M candidates (images + captions + metadata) into context for the generator. If generator is text-only, supply captions & metadata; if multi-modal generator, feed images directly.
 
