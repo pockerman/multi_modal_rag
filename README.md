@@ -10,7 +10,6 @@ The implementation that is used is as follows:
    3. Re-rank: Run cross-modal re-ranker (e.g., cross-encoder that takes query + image) over top N fused candidates; final ranking from re-rank or fused+rerank.
 3. Generate: top M candidates (images + captions + metadata) into context for the generator. If generator is text-only, supply captions & metadata; if multi-modal generator, feed images directly.
 
-
 There are various options for the retriever
 
 - Visual dense retriever: CLIP (ViT-B/32 or ViT-L) embeddings stored in FAISS (HNSW/IVF+PQ for scale).
@@ -29,7 +28,7 @@ normalize the results. Normalization options (per query over candidate set):
 
 Similarly, several options exist to fuse the results:
 
-- Simple weighted fusion: ```fused = w_vis * vis_score_norm + w_txt * txt_score_norm + w_meta * meta_score_norm```
+- Simple weighted fusion: ```fused = w_vis * vis_score_norm + w_txt * txt_score_norm```
 - Reciprocal Rank Fusion (RRF) — robust, hyperparameter k (e.g., 60): ```RRF_score = sum(1 / (k + rank_i))``` for each retriever i
 - Learned fusion: Train a small model (logistic regression, LightGBM) on features:
    - normalized scores, ranks, metadata features (age, popularity)

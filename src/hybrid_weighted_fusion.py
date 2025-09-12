@@ -33,22 +33,29 @@ class HybridWeightedFusion:
                 cross_encoder_model
             ).to(device)
 
-    def retrieve(self, image_embeddings: list[float],
-                 text_embeddings: list[float], images_repository: str,
+    def retrieve(self, image_embeddings: list[float] | None,
+                 text_embeddings: list[float] | None, images_repository: str,
                  text_repository: str, vector_db: ChromaDBHttpWrapper,
-                 n_results: int):
+                 n_results: int) -> tuple[dict | None, dict | None]:
 
-        image_results = vector_db.query(repository_name=images_repository,
-                                        query_embeddings=image_embeddings, n_results=n_results)
+        image_results = None
+        if image_embeddings is not None:
+            image_results = vector_db.query(repository_name=images_repository,
+                                            query_embeddings=image_embeddings, n_results=n_results)
 
-        text_results = vector_db.query(repository_name=text_repository,
-                                       query_embeddings=text_embeddings, n_results=n_results)
+        text_results = None
+        if text_embeddings is not None:
+            text_results = vector_db.query(repository_name=text_repository,
+                                           query_embeddings=text_embeddings, n_results=n_results)
 
         return image_results, text_results
 
-    def fuse(self, img_results: dict, text_results: dict,
+    def fuse(self, img_results: dict | None, text_results: dict | None,
              w_img: float = 0.6, w_txt: float = 0.4,
              fusion_method: str = 'RRF') -> list:
+
+        if img_results is None and text_results is None:
+            raise ValueError("Either image or text results should be provided in order to fuse documents")
 
         # ---- Stage 3: Weighted Fusion ----
         fused = {}
@@ -64,12 +71,12 @@ class HybridWeightedFusion:
         else:
             # weighted fusion
 
-            if len(img_results['distances'][0]) != 0:
+            if img_results and len(img_results['distances'][0]) != 0:
                 img_scores = normalize_scores(img_results["distances"][0])
                 for i, doc_id in enumerate(img_results["ids"][0]):
                     fused[doc_id] = fused.get(doc_id, 0) + w_img * img_scores[i]
 
-            if len(text_results['distances'][0]) != 0:
+            if text_results and len(text_results['distances'][0]) != 0:
                 txt_scores = normalize_scores(text_results["distances"][0])
                 for i, doc_id in enumerate(text_results["ids"][0]):
                     fused[doc_id] = fused.get(doc_id, 0) + w_txt * txt_scores[i]
@@ -79,8 +86,9 @@ class HybridWeightedFusion:
         return fused_sorted
 
     def multistage_retrieval(self, query: str,
-                             image_embeddings: list[float],
-                             text_embeddings: list[float], images_repository: str,
+                             image_embeddings: list[float] | None,
+                             text_embeddings: list[float] | None,
+                             images_repository: str,
                              text_repository: str, vector_db: ChromaDBHttpWrapper,
                              top_img: int, w_img: float, w_txt: float, top_final: int,
                              fusion_method: str = 'RRF', use_rerank: bool = True,
@@ -113,11 +121,11 @@ class HybridWeightedFusion:
         # ---- Stage 4: Re-ranking with cross-encoder ----
         score_weight = 1.0 - rerank_score_weight
         if use_rerank and self.cross_encoder_model:
-                for c in candidates:
-                    rerank_score = self._cross_encoder_score(query, c["description"])
-                    # combine fusion and rerank scores (can tune weights)
-                    c["score"] = score_weight * c["score"] + rerank_score_weight * rerank_score
-                candidates = sorted(candidates, key=lambda x: x["score"], reverse=True)
+            for c in candidates:
+                rerank_score = self._cross_encoder_score(query, c["description"])
+                # combine fusion and rerank scores (can tune weights)
+                c["score"] = score_weight * c["score"] + rerank_score_weight * rerank_score
+            candidates = sorted(candidates, key=lambda x: x["score"], reverse=True)
 
         return candidates[:top_final]
 
