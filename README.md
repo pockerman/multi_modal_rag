@@ -44,6 +44,28 @@ Cross-encoder that consumes (query, candidate) pair and outputs a high-quality s
 - Or use CLIP similarity as a fast re-ranker if cross-encoder infrastructure not available.
 - Batch inference on GPU for speed.
 
+
+
+## How to use
+
+Install the requirements and start a ChromaDB node: 
+
+```
+chroma run --path ./chromadb --host 0.0.0.0 --port 8003
+```
+
+Run the ```ingest_pipeline.py``` script to populate the database. This creates three collections:
+
+- ```faqs_repo```
+- ```defects_images```
+- ```defects_texts```
+
+Start the Ollama server
+
+```
+OLLAMA_HOST=0.0.0.0 OLLAMA_PORT=11434 ollama serve
+```
+
 ## References
 
 1. <a href="https://huyenchip.com/2023/10/10/multimodal.html">Multimodality and Large Multimodal Models (LMMs)</a>  

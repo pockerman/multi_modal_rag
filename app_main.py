@@ -1,5 +1,4 @@
 from pathlib import Path
-from PIL import Image
 import numpy as np
 from sentence_transformers import SentenceTransformer
 from src.chromadb_wrapper import ChromaDBHttpWrapper
