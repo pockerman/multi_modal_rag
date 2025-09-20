@@ -18,7 +18,7 @@ def normalize(v):
 
 def embed_image_from_file(img_data: dict, image_encoder, chroma_db: ChromaDBHttpWrapper, *,
                           to_rgb: bool = True, normalize: Callable = normalize,
-                          repository_name: str = 'images') -> str:
+                          repository_name: str = 'hull_defects_imgs') -> str:
     img_model = ImageModel.create_from(data=img_data,
                                        image_encoder=image_encoder,
                                        to_rgb=to_rgb, normalize=normalize)
@@ -277,7 +277,7 @@ if __name__ == '__main__':
     chromadb_wrapper.create_collection(IMAGES_REPO)
     chromadb_wrapper.create_collection(DEFECTS_REPO_TEXT)
 
-    # CLIP model for both text & images
+    # CLIP model for both text & hull_defects_imgs
     clip_model = SentenceTransformer("clip-ViT-L-14")
 
     # access all the defects
@@ -286,7 +286,7 @@ if __name__ == '__main__':
     create_faqs(defects=defects, faqs_repo=FAQS_REPO,
                 chroma_db=chromadb_wrapper, text_encoder=clip_model)
 
-    # get the directories for images
+    # get the directories for hull_defects_imgs
     dirs = os.listdir(IMAGES_PATH)
 
     for defect in defects:
@@ -313,7 +313,7 @@ if __name__ == '__main__':
         material = defect['material']
         defect_description = defect['description']
 
-        images = defect['images']
+        images = defect['hull_defects_imgs']
 
         if images:
 

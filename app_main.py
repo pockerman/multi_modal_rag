@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
     img_path = DATA_PATH / 'test/crack/4.jpg'
 
-    # CLIP model for both text & images
+    # CLIP model for both text & hull_defects_imgs
     clip_model = SentenceTransformer("clip-ViT-L-14")
 
     chromadb_wrapper = ChromaDBHttpWrapper(host='0.0.0.0', port=8003)
@@ -54,9 +54,11 @@ if __name__ == '__main__':
     #     print(f"ID: {r['id']} | Score: {r['score']:.4f} | Defect: {r['metadata']['label']} | Desc: {r['description']}")
 
     ollama_result = call_ollama(image_path=img_path,
-                                summary_prompt=summary_prompt, defect_prompt=defect_prompt,
+                                summary_prompt=summary_prompt,
+                                defect_prompt=defect_prompt,
                                 chromadb_wrapper=chromadb_wrapper, retriever=retriever,
-                                text_repository='defects_texts', images_repository="defects_images",
+                                text_repository='defects_texts',
+                                images_repository="defects_images",
                                 clip_model=clip_model, ollama_path=OLLAMA_URL,
                                 top_img=15, top_final=5, w_img=0.7, w_txt=0.3,
                                 n_tries=3, timeout=60.0, image_caption=None,

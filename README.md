@@ -66,6 +66,12 @@ Start the Ollama server
 OLLAMA_HOST=0.0.0.0 OLLAMA_PORT=11434 ollama serve
 ```
 
+
+### Assess the query classifier
+
+Run the script ```evaluate_query_classifier.py``` by default the script loads the ```data/test/test_query_classifier.json``` data
+and runs ```mistral``` as an LLM. It also uses the prompt in ```prompts/query_classifier/query_classifier.txt```
+
 ## References
 
 1. <a href="https://huyenchip.com/2023/10/10/multimodal.html">Multimodality and Large Multimodal Models (LMMs)</a>  

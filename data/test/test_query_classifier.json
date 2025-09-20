@@ -1,0 +1,50 @@
+{
+  "queries": [
+    {
+      "query": "what is the time?",
+      "expected": false
+    },
+    {
+      "query": "what is a banana",
+      "expected": false
+    },
+    {
+      "query": "my name is george",
+      "expected": false
+    },
+    {
+      "query": "what is your name?",
+      "expected": false
+    },
+     {
+      "query": "is this a question?",
+      "expected": false
+    },
+    {
+      "query": "this is not a question",
+      "expected": false
+    },
+    {
+      "query": "what is corrosion?",
+      "expected": true
+    },
+    {
+      "query": "please explain the delamination defect",
+      "expected": true
+    },
+    {
+      "query": "what is a blister?",
+      "expected": true
+    },
+    {
+       "query": "is warping a defect?",
+      "expected": true
+    },
+     {
+       "query": "can you get blisters on steel hulls?",
+      "expected": true
+    }
+
+
+  ]
+}

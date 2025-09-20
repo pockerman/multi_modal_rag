@@ -66,7 +66,7 @@ def call_ollama(image_path: str | Path, image_caption: str | None,
     img_embedding = normalize(clip_model.encode(image))
     text_embedding = normalize(clip_model.encode(image_caption)) if image_caption else None
 
-    # Retrieve similar images
+    # Retrieve similar hull_defects_imgs
     results = retriever.multistage_retrieval(
         query="What's in this image?",
         image_embeddings=img_embedding,
@@ -81,7 +81,7 @@ def call_ollama(image_path: str | Path, image_caption: str | None,
     # get the model response and put these in the
     # prompt
 
-    print(f'Retrieved {len(results)} similar images')
+    print(f'Retrieved {len(results)} similar hull_defects_imgs')
 
     retrieved_summaries = "\n".join([
         f"- {doc['description']}" for doc in results
@@ -97,7 +97,7 @@ def call_ollama(image_path: str | Path, image_caption: str | None,
         data = {
             "model": model,
             "prompt": summary_prompt,
-            "images": [encoded_image],
+            "hull_defects_imgs": [encoded_image],
             "options": {"temperature": temperature},
             "stream": False,
             "raw": False

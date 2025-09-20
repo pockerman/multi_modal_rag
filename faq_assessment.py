@@ -23,7 +23,7 @@ if __name__ == '__main__':
     TIMEOUT = 120.0
     PROMPTS_PATH = Path('./prompts')
     FAQ_PATH = PROMPTS_PATH / "faqs/v1.txt"
-    CLASSIFIER_PATH = PROMPTS_PATH / "faqs/query_classifier.txt"
+    CLASSIFIER_PATH = PROMPTS_PATH / "query_classifier/query_classifier.txt"
     clip_model = SentenceTransformer("clip-ViT-L-14")
     chromadb_wrapper = ChromaDBHttpWrapper(host='0.0.0.0', port=8003)
 
