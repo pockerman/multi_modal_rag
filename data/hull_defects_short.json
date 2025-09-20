@@ -1,0 +1,1488 @@
+{
+	
+	"item":"hull",
+	"defects":[
+		{
+			"label":"corrosion",
+			"name": "corrosion",
+			"synonyms": ["rust"],
+			"material": ["steel"],
+			"description": "A significant issue, especially in steel hulls, resulting from saltwater exposure. It can appear as surface degradation or internal damage and is a major cause of structural weakness",
+			"faqs": [{
+				"description": "what is corrosion?",
+				"common-causes": "what are some common causes of corrosion?",
+				"visual-cues": "how can corrosion be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for corrosion?",
+				"recommendations": "how can I address corrosion defects?"
+			}],
+			"common-causes": [{"variant":"steel",
+				               "causes":["Electrochemical reaction with seawater (oxidation)",
+    						            "Breakdown or failure of protective coatings",
+    						            "Galvanic corrosion due to dissimilar metals",
+    						            "Poor drainage leading to standing water",
+                                        "Inadequate cathodic protection (sacrificial anodes)"]
+			                  }
+				            ],
+			"visual-cues": [{"variant":"steel", 
+				            "cues":["Red-brown or orange rust patches on painted surfaces",
+				                    "Localized pitting or crater-like holes",
+				                    "Flaking or scaling metal", 
+				                    "Coating blistering or peeling exposing bare steel", 
+				                    "Waterline rust streaks"]
+						    }],
+			"inspection-notes": [{"variant":"steel",
+				                  "notes": ["Check high-risk areas: waterline, bilges, weld seams, cargo holds",
+                                            "Perform ultrasonic thickness gauging to assess steel loss",
+                                            "Assess coating condition alongside corrosion severity",
+                                            "Record progression over time to monitor deterioration"]
+				                }
+                                ],
+			"recommendations": [{   "variant": "steel",
+								    "summary": "Addressing corrosion depends a lot on the level of the damage.",
+									"minor":{
+										"criteria": ["Superficial rust or discoloration, intact base metal with no significant material loss."],
+										"actions": ["Remove rust with wire brush or sandblasting, clean surface, apply primer and marine-grade protective coating."]
+									},
+									"moderate":{
+										"criteria": ["Localized pitting, small areas of coating failure, minor surface roughness with measurable steel loss."],
+										"actions": ["Mechanically remove corrosion, measure steel thickness (ultrasonic gauge), apply epoxy filler for shallow pits, recoat with anti-corrosion system."]
+									},
+									"severe":{
+										"criteria": ["Extensive pitting, deep material loss, perforations, or structural weakening at plating or weld seams."],
+										"actions": ["Replace affected steel plating or sections, weld reinforcement as required, conduct full structural survey. Professional yard repair mandatory."]
+									},
+									"considerations": "Use ultrasonic or magnetic testing to detect internal corrosion."
+			                    }],
+			"refs": ["https://marlinblue.com/common-hull-damage-causes-types-and-claims/", "https://marlinblue.com/what-are-the-basic-types-of-hull-damage-inspections/"],
+			"images":[
+				{
+					"variant": "steel",
+					"severity": "severe",
+					"source": "corrosion/steel/severe/1.jpeg",
+					"description": "Extensive corrosion over a metal plate"
+				},
+				{
+					"variant": "steel",
+					"severity": "severe",
+					"source": "corrosion/steel/severe/2.jpg",
+					"description": "Extensive corrosion over a metal plate"
+				},
+				{
+					"variant": "steel",
+					"severity": "severe",
+					"source": "corrosion/steel/severe/3.jpeg",
+					"description": "Extensive corrosion over a metal plate"
+				},
+				{
+					"variant": "steel",
+					"severity": "severe",
+					"source": "corrosion/steel/severe/4.jpg",
+					"description": "Extensive corrosion over a metal plate. The corrosion seems to have caused one large hole and one small hole on the metal plate"
+				},
+				{
+					"variant": "steel",
+					"severity": "minor",
+					"source": "corrosion/steel/minor/5.jpeg",
+					"description": "Corrosion damage on a ship's hull showing localized rust spots, a sign of metal deterioration over time"
+				},
+				{
+					"variant": "steel",
+					"severity": "severe",
+					"source": "corrosion/steel/severe/6.png",
+					"description": "Extensive corrosion on a three-blade vessel propeller"
+				},
+				{
+					"variant": "steel",
+					"severity": "severe",
+					"source": "corrosion/steel/severe/7.jpeg",
+					"description": "Extensive corrosion on the hull plating of bulk carrier",
+					"refs": "https://marlinblue.com/common-hull-damage-causes-types-and-claims/"
+				}
+			]
+	    },
+	    {
+			"label":"crack",
+			"name": "crack",
+			"synonyms": null,
+			"material": ["fiberglass", "steel"],
+			"description": "Fractures or separations in the hull material caused by stress, fatigue, impact, or manufacturing flaws. Cracks may compromise watertightness and structural integrity depending on severity and location.",
+			"faqs": [{
+				"description": "what is a crack?",
+				"common-causes": "what are some common causes of cracks",
+				"visual-cues": "how can cracks be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for cracks?",
+				"recommendations": "how can I address crack defects?"
+			}],
+			"common-causes": [
+				    {
+
+				        "variant": "steel",
+				        "causes": ["Fatigue stress from cyclic loading",
+        				           "Weld defects (porosity, lack of fusion)",
+                                   "Impact damage",
+                                   "Stress concentration from poor design features",
+                                   "Corrosion-induced weakening leading to cracking"]
+			        },
+			        {
+			        	"variant": "fiberglass",
+			        	"causes": ["Impact damage (grounding, collisions)",
+                                   "Stress concentration at fittings, corners, or hard points",
+                                   "Poor layup or resin curing in original construction",
+                                   "Fatigue stress over time",
+                                   "Water ingress leading to freeze-thaw cracking"]
+			        }
+		        ],
+			"visual-cues": [{
+			                   "variant": "steel", 
+			                   "cues":["Linear fractures along weld seams",
+                                       "Hairline cracks radiating from stress concentration points (e.g., cutouts, corners)",
+                                       "Rust streaks emanating from cracks",
+                                       "Deformation or distortion near the crack area"]
+			                },
+			                {
+			                	"variant": "fiberglass",
+			                	"cues": ["Spider cracks in gelcoat (fine surface fractures)",
+        								 "Star-shaped cracks radiating from impact points",
+        								 "Longitudinal cracks following stress lines in laminate",
+        								 "Discoloration or moisture stains around cracks"]
+			                }
+
+			               ],
+			"inspection-notes": [{"variant": "steel", 
+				                  "notes": ["Pay special attention to weld seams, stress concentration points, corners, and openings",
+                                            "Use magnetic particle testing or dye penetrant for crack detection",
+                                            "Check for rust bleeding from cracks (indicates progression)"]
+				                 }, 
+				                 {"variant": "fiberglass", 
+				                  "notes": ["Tap test around cracks to check for hollow sound (delamination)",
+				                  	        "Check for discoloration or moisture near cracks",
+				                  	        "Superficial gelcoat cracks are often cosmetic but may indicate deeper issues"]
+				                }],
+			"recommendations":[
+				{
+					"variant": "steel",
+					"summary": "Addressing cracks on a steel hull depends heavily on the extent of the damage",
+					"minor": {
+						"criteria": ["Hairline surface crack, no propagation, located in non-critical area."],
+						"actions": ["Clean area, grind out crack, reweld if necessary, recoat with anti-corrosion protection. Monitor closely."]
+					},
+					"moderate": {
+						"criteria": ["Visible crack with some propagation, located near weld seam or load-bearing area."],
+						"actions": ["Stop-drill crack ends, grind out, reweld with certified procedure, verify thickness with ultrasonic testing. Reapply protective coatings."]
+					},
+					"severe": {
+						"criteria": ["Large or branching cracks, propagating through plating or critical structural members."],
+						"actions": ["Immediate repair in shipyard. Replace affected plating or sections, weld reinforcement as per class society rules. Mandatory classification survey."]
+					},
+					"considerations": null
+				},
+				{
+					"variant": "fiberglass",
+					"summary": "Addressing fatigue in a fiberglass boat involves inspecting the hull and other critical areas for signs of cracking or weakness. Small cracks can often be repaired using a repair kit, but more extensive damage may require professional assistance. To minimize the fatigue risk, ensure that your boat is not overloaded. Avoid pushing it beyond its designed limits, especially when you go offshore in BC waters.",
+					"minor": {
+						"criteria": ["Superficial gel-coat crack with no penetration into laminate."],
+						"actions": ["Grind out crack, fill with marine-grade epoxy filler, sand and recoat gel-coat. Monitor for recurrence."]
+					},
+					"moderate": {
+						"criteria": ["Crack penetrates laminate but is localized, no large delamination."],
+						"actions": ["Grind out affected laminate, apply new fiberglass cloth and epoxy, fair and refinish surface. Check for moisture ingress."]
+					},
+					"severe": {
+						"criteria": ["Structural crack through multiple laminate layers, widespread delamination, or cracks compromising hull integrity."],
+						"actions": ["Full structural repair in professional yard. Remove damaged laminate/core, rebuild with vacuum bagging or infusion. Naval architect assessment may be required."]
+					},
+					"considerations": null
+				}
+			],
+			"refs": ["https://www.albernipowermarine.com/blog/fiberglass-boat-repair-5-most-common-issues-and-their-solutions", 
+				     "https://marlinblue.com/common-hull-damage-causes-types-and-claims/", 
+				     "https://marlinblue.com/what-are-the-basic-types-of-hull-damage-inspections/"],
+			"images":[
+				{
+					"variant":"steel",
+					"severity":"severe",
+					"source": "crack/steel/severe/1.jpeg",
+					"description": "Fatigue crack on a metal frame"
+				},
+				{
+					"variant":"steel",
+					"severity":"moderate",
+					"source": "crack/steel/moderate/2.jpeg",
+					"description": "Fatigue crack on a metal frame"
+				},
+				{
+					"variant":"steel",
+					"severity":"minor",
+					"source": "crack/steel/minor/2.jpeg",
+					"description": "Minor  crack on gel-coat"
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"moderate",
+					"source": "crack/fiberglass/moderate/4.png",
+					"description": "Cracks on gel-coat. The spider like shape of the cracks may also imply delamination of the gel-coat"
+				}
+			]
+	    },
+	    {
+	    	"label": "warping",
+	    	"name":"warping",
+	    	"synonyms": null,
+	    	"material": ["fiberglass"],
+	    	"description": "When fiberglass  boats are exposed to heat for long, boat warping occurs. It causes the parts of the hull to miss shape and become prone to lose formation when kept under extreme heat. This can lead to a compromised structure and a decrease in the boat’s overall performance and safety. Leaving your boat uncovered during hot summer months can result in severe damage due to the warping process.",
+	    	"faqs": [{
+				"description": "what is warping?",
+				"common-causes": "what are some common causes of warping",
+				"visual-cues": "how can warping be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for warping?",
+				"recommendations": "how can I address warping defects?"
+			}],
+			"common-causes": [{"variant":"fiberglass", "causes":["Excessive sun/heat exposure",
+    						                                     "Manufacturing defects (poor layup or resin cure)",
+    						  									 "Impact damage",
+    						  									 "Water intrusion into balsa/foam core",
+    						  									 "Improper trailering or loading"]}],
+
+	    	"visual-cues": [{"variant":"fiberglass", 
+	    		             "cues": ["Warping of fiberglass on a maritime vessel can be visually detected by looking for noticeable distortions in the hull or deck surfaces, such as concave or convex areas, uneven contours, or misaligned sections when viewing the boat from different angles", 
+	    		                      "Signs like dimples, bulges, or areas that appear to be pulled away from their intended shape, such as a hull front section separating from a hard bit, can indicate warping", 
+	    		                      "Additionally, warping may be accompanied by other visual cues like gelcoat cracking, especially at sharp angles or unsupported areas, which can signal underlying structural stress or weakness", 
+	    		                      "While visual inspection is the first step, it's important to note that warping might not always be obvious and can sometimes be confirmed through tactile checks, such as feeling for soft spots or using a tap test to detect internal delamination or structural issues"
+	    		           ]}],
+	    	"inspection-notes": [{"variant":"fiberglass", 
+	    		                  "notes":["Best detected under raking light or shallow-angle photos",
+                                           "Use moisture meter to check for water intrusion",
+                                           "Tap testing can help detect delamination under warped areas"]}],
+
+	    	"recommendations": [{
+	    		"variant": "fiberglass",
+	    		"summary":"Fiberglass hull warping is a structural issue, and the right fix depends on whether the warping is cosmetic, moderate, or severe (structural integrity at risk)",
+	    		"minor": {"criteria": ["Slight cosmetic waviness or print-through. No cracks or structural weakness."], 
+	    		          "actions": ["Sand the surface smooth. Reapply fairing compound (marine-grade epoxy filler). Refinish with gelcoat or marine paint."]},
+	    		"moderate":{"criteria": ["Localized bulges or depressions with minor cracking. Possible partial delamination or wet core."],
+	    		            "actions":["Grind away gelcoat in warped section.Inspect laminate layers for delamination. Dry out core if wet; replace damaged balsa/foam with marine-grade epoxy core filler or new core material. Re-laminate fiberglass layers with epoxy + fiberglass cloth. Fair & refinish with gelcoat."]},
+	    		"severe": {"criteria": ["Large-scale distortion, hull flexing under load, performance or seaworthiness compromised."],
+	    		           "actions": ["Vessel must be hauled out and structurally repaired in a professional yard.Remove warped sectionsand replace laminate/core use vacuum-bag or infusion methods for proper layup. May require naval architect assessment if hull integrity compromised."]},
+	    		"considerations": "Moisture Check: Always check for trapped moisture (with a moisture meter) before repair. Otherwise, the issue will recur. Load-bearing Areas: Warping near keel, stringers, bulkheads = higher risk, needs professional survey."
+	    	}],
+	    	"refs": ["https://www.albernipowermarine.com/blog/fiberglass-boat-repair-5-most-common-issues-and-their-solutions"],
+	    	"images": null
+
+	    },
+	    {
+			"label":"dent",
+			"name": "dent",
+			"synonyms": ["intendation"],
+			"material": ["steel", "fiberglass"],
+			"description": "Localized deformations of the hull structure, often resulting from impacts or collisions. Dents may be cosmetic but can also weaken plating or indicate underlying structural damage.",
+			"faqs": [{
+				"description": "what is dent?",
+				"common-causes": "what are some common causes of dents",
+				"visual-cues": "how can dents be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for dents?",
+				"recommendations": "how can I address dent defects?"
+			}],
+			"common-causes": [{"variant": "steel",
+				               "causes":["Docking or mooring impacts",
+        								 "Collision with floating objects",
+        								 "Grounding on rocks or seabed",
+        								 "Heavy cargo handling accidents"]},
+				               {"variant": "fiberglass", 
+				               	"causes":["Collision with dock, piling, or debris",
+        		                          "Grounding impact", "Dropped heavy object onto hull",
+                                          "High localized loads at unsupported areas"]}],
+			"visual-cues": [{"variant": "steel", 
+				             "cues": ["Concave depressions in hull plating",
+                                      "Creased or buckled areas near weld seams or stiffeners",
+                                      "Paint/anti-fouling coating deformation",
+                                      "Possible rusting or cracking at dent edges"]},
+				            {"variant": "fiberglass", 
+				             "cues": ["Localized concave surface area (soft spot)",
+        							  "Cracked or crazed gelcoat at impact point",
+                                      "Depression that does not spring back",
+                                     "Possible delamination or crushed core beneath"]}],
+			"inspection-notes": [{"variant": "steel", 
+			                      "notes":["Check internal frames behind dent for distortion",
+                                           "Ultrasonic thickness measurement if coating was damaged",
+                                           "Watch for cracks forming at dent perimeter"]
+			                     },
+				                {"variant":"fiberglass", 
+	    		                  "notes":["Tap test around dent to detect hidden delamination",
+                                           "Check for moisture ingress around cracked gelcoat",
+                                           "Flex test — press around dent to detect soft spots"]}],
+			"recommendations": [
+				{"variant": "steel", "summary": null, "considerations": null,
+				  "minor":{
+				  	"criteria": ["Shallow dent with no distortion of internal stiffeners or weld seams."],
+				  	"actions": ["Monitor. Cosmetic fairing if required. Touch up protective coating to prevent corrosion."]
+				  },
+				  "moderate": {
+				  	"criteria": ["Dent with minor distortion near stiffeners, possible paint cracking or coating damage."],
+				  	"actions": ["Mechanical straightening (cold work), weld build-up if required. Recoat area. NDT check for hidden cracking."]
+				  },
+				  "severe": {
+				  	"criteria": ["Large dent, sharp crease, or plating buckling with structural compromise."],
+				  	"actions": ["Cut out and replace affected plating. Inspect framing behind plating. Mandatory classification survey."]
+				  }	
+				},
+				{
+	    		"variant": "fiberglass",
+	    		"summary":null,
+	    		"minor": {"criteria": ["Superficial gelcoat depression, no structural compromise."], 
+	    		          "actions": ["Cosmetic fairing with epoxy filler, sand, and re-gelcoat. Monitor for spreading."]},
+	    		"moderate":{"criteria": ["Dent with crushed core or localized delamination."],
+	    		            "actions":["Remove damaged laminate/core, rebuild with fiberglass/epoxy layup, refinish surface."]},
+	    		"severe": {"criteria": ["Large depression with multiple layers crushed or delaminated, hull flexing in area."],
+	    		           "actions": ["Professional structural repair. Replace core material and rebuild laminate using vacuum bagging or infusion."]},
+	    		"considerations": "Moisture Check: Always check for trapped moisture (with a moisture meter) before repair. Otherwise, the issue will recur. Load-bearing Areas: Warping near keel, stringers, bulkheads = higher risk, needs professional survey."
+	    	}],
+			"refs": ["https://marlinblue.com/common-hull-damage-causes-types-and-claims/", "https://marlinblue.com/what-are-the-basic-types-of-hull-damage-inspections/"],
+	    	"images": [
+	    		{
+	    			"variant":"steel",
+	    			"source": "dent/steel/severe/2.jpeg",
+					"severity": "severe",
+	    			"description": "A cargo vessel with a visible dent on its hull, illustrating typical indentation damage that can compromise structural integrity.",
+	    			"refs":null
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"minor",
+	    			"source": "dent/steel/minor/0.png",
+	    			"description": "A steel boat hull with a minor dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with a small dent, localized depression in the plating from minor impact. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, close-up of hull surface with visible dent, dockside inspection.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"minor",
+	    			"source": "dent/steel/minor/1.png",
+	    			"description": "A steel boat hull with a minor dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with a small dent, localized depression in the plating from minor impact. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, close-up of hull surface with visible dent, dockside inspection.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "dent/steel/moderate/0.png",
+	    			"description": "A steel boat hull with a moderate dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with a moderate dent, noticeable inward deformation spanning a wider area of the plating. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, side view of hull at dock, deformation clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "dent/steel/moderate/1.png",
+	    			"description": "A steel boat hull with a moderate dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Steel ship hull with a moderate dent, noticeable inward deformation spanning a wider area of the plating. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, side view of hull at dock, deformation clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "dent/steel/severe/1.png",
+	    			"description": "A steel boat hull with severe dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Steel ship hull with a severe dent, large deformation in plating with distortion of surrounding frames. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, shipyard inspection angle, damage clearly from a major collision.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "dent/steel/severe/3.png",
+	    			"description": "A steel boat hull with severe dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Steel ship hull with a severe dent, large deformation in plating with distortion of surrounding frames. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, shipyard inspection angle, damage clearly from a major collision.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "dent/steel/severe/4.png",
+	    			"description": "A steel boat hull with severe dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Steel ship hull with a severe dent, large deformation in plating with distortion of surrounding frames. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, shipyard inspection angle, damage clearly from a major collision.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"severe",
+	    			"source": "dent/fiberglass/severe/0.png",
+	    			"description": "A fiberglass boat hull with severe dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "fiberglass ship hull with a severe dent, large deformation in plating with distortion of surrounding frames. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, shipyard inspection angle, damage clearly from a major collision.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"severe",
+	    			"source": "dent/fiberglass/severe/1.png",
+	    			"description": "A fiberglass boat hull with severe dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "fiberglass ship hull with a severe dent, large deformation in plating with distortion of surrounding frames. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, shipyard inspection angle, damage clearly from a major collision.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"severe",
+	    			"source": "dent/fiberglass/severe/2.png",
+	    			"description": "A fiberglass boat hull with severe dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "fiberglass ship hull with a severe dent, large deformation in plating with distortion of surrounding frames. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, shipyard inspection angle, damage clearly from a major collision.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"minor",
+	    			"source": "dent/fiberglass/minor/0.png",
+	    			"description": "A fiberglass boat hull with minor dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Fiberglass ship hull with a small dent, localized depression in the plating from minor impact. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, close-up of hull surface with visible dent, dockside inspection.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"minor",
+	    			"source": "dent/fiberglass/minor/1.png",
+	    			"description": "A fiberglass boat hull with minor dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Fiberglass ship hull with a small dent, localized depression in the plating from minor impact. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, close-up of hull surface with visible dent, dockside inspection.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"moderate",
+	    			"source": "dent/fiberglass/moderate/1.png",
+	    			"description": "A fiberglass boat hull with moderate dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Fiberglass ship hull with a moderate dent, noticeable inward deformation spanning a wider area of the plating. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, side view of hull at dock, deformation clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"moderate",
+	    			"source": "dent/fiberglass/moderate/0.png",
+	    			"description": "A fiberglass boat hull with moderate dent",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "Fiberglass ship hull with a moderate dent, noticeable inward deformation spanning a wider area of the plating. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, side view of hull at dock, deformation clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+
+	    			}
+	    		}
+	    	]
+	    },
+	    {
+	    	"label": "gash",
+	    	"name": "gash",
+	    	"synonyms": null,
+	    	"material": ["steel", "fiberglass"],
+	    	"description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+	    	"faqs": [{
+				"description": "what is a gash?",
+				"common-causes": "what are some common causes of gashes?",
+				"visual-cues": "how can gashes be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for gashes?",
+				"recommendations": "how can I address gashes defects?"
+			}],
+			"common-causes": [{"variant": "steel",
+	    		               "causes": ["Collision with sharp object (rocks, debris, other vessels)",
+        								  "Pier or dock strike", 
+        								  "Grounding on reefs or submerged obstacles", 
+        								  "Severe storm damage / large wave impacts"]}, 
+	    		               {"variant": "fiberglass", 
+	    		               	"causes": ["Sharp impact (collision with debris, docks, submerged logs)",
+                                           "Dropped heavy object on hull",
+                                           "Strike from anchor chain or other equipment",
+                                           "Severe storms or wave strikes"]
+	    		               }],
+	    	"visual-cues": [{"variant": "steel", 
+	    		             "cues": ["Deep, sharp-edged cut or tear in steel plating",
+                                      "Jagged edges, possibly exposing internal structure (frames, stiffeners)", 
+                                      "Waterline breach (water ingress) if below waterline",
+                                      "Deformed plating around the gash"]}, 
+	    		             {"variant": "fiberglass", 
+	    		              "cues": ["Large tear or cut through gelcoat and fiberglass laminate layers",
+                                       "Jagged or frayed edges of the laminate",
+                                      "Exposed core material (if composite hull has a core)",
+                                      "Water ingress visible through cut, drips or moisture stains",
+                                      "Flexing or leaking from the gash under load or wave action"]
+	    		            }],
+	    	"inspection-notes": [{"variant": "steel", 
+			                      "notes":["Immediately isolate water ingress; if flooding, use temporary sealing",
+        								   "Measure depth, length, and thickness penetration of the gash",
+        								   "Check adjacent stiffeners, frames for deformation or overstress",
+        								   "Photograph from multiple angles; use underwater inspection if below waterline",
+        								   "Assess whether gash runs into other defects like corrosion or weld fatigue"]
+			                     },
+				                {"variant":"fiberglass", 
+	    		                  "notes":["Check for water ingress or leaks at the cut (especially if near or below waterline)",
+        								   "Inspect core material for damage or rot if used",
+        								   "Photograph edges, measure width and depth of the gash",
+        								   "Ensure that repair material matches the original laminate layup for strength"]
+	    		                }],
+	    	"recommendations": [
+				{"variant": "steel", "summary": null, "considerations": null,
+				  "minor":{
+				  	"criteria": ["Shallow cut not penetrating full thickness, limited length, not in critical area."],
+				  	"actions": ["Clean area, bevel edges, weld patch or insert plate, seal & repaint. Temporary trimming of sharp edges."]
+				  },
+				  "moderate": {
+				  	"criteria": ["Cut penetrating most of plate thickness, longer in length, possibly reaching weld seams or near stiffeners."],
+				  	"actions": ["Cut out damaged section, replace with new plating, weld per classification standards, check neighboring structure for secondary damage, reapply corrosion protection."]
+				  },
+				  "severe": {
+				  	"criteria": ["Large or deep cut, full penetration, flooding, compromise of structural integrity; possibly below waterline or in critical zones."],
+				  	"actions": ["Emergency repair at sea if possible (patching), then haul out; full structural repair in dock; classification society oversight may be required; may need replacement of frames or stiffeners; ensure watertight integrity."]
+				  }	
+				},
+				{
+	    		"variant": "fiberglass",
+	    		"summary":null,
+	    		"minor": {"criteria": ["Cut through gelcoat and outer laminate only; not deep, no core involvement, small length."], 
+	    		          "actions": ["Clean edges, trim frayed fibers, patch with small fiberglass/epoxy repair, fair & refinish surface. Seal edges to prevent water ingress."]},
+	    		"moderate":{"criteria": ["Cut through multiple laminate layers or into core, possibly leaking, larger length or in stressed area."],
+	    		            "actions":["Remove damaged laminate and core, dry core if affected, replace core material, re-laminate with fiberglass cloth/epoxy, ensure proper bonding; fair & gelcoat finish."]},
+	    		"severe": {"criteria": ["Full penetration, possibly structural, leaking into interior or waterline, exposed core extensively; may compromise hull strength or buoyancy."],
+	    		           "actions": ["Haul out for comprehensive repair; remove and replace large sections of laminate-core assembly; use vacuum/infusion techniques for structural strength; involve expert surveyor; ensure watertight and structural integrity."]},
+	    		"considerations": null
+	    	}],
+	    	"refs": ["https://marlinblue.com/common-hull-damage-causes-types-and-claims/", "https://marlinblue.com/what-are-the-basic-types-of-hull-damage-inspections/"],
+	    	"images": [
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"minor",
+	    			"source": "gash/fiberglass/minor/2.png",
+	    			"description": "A fiberglass boat hull with a small surface gash in the gelcoat",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "A fiberglass boat hull with a small surface gash in the gelcoat, realistic marine photography, close-up view",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"minor",
+	    			"source": "gash/fiberglass/minor/3.png",
+	    			"description": "A fiberglass boat hull with a small surface gash in the gelcoat",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "A fiberglass boat hull with a small surface gash in the gelcoat, realistic marine photography, close-up view",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"moderate",
+	    			"source": "gash/fiberglass/moderate/0.png",
+	    			"description": "A fiberglass boat hull with a moderate gash in the gelcoat",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "A fiberglass boat hull with a deep gash exposing fiberglass layers, realistic marine photography, angled side view",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+
+	    			}
+
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"moderate",
+	    			"source": "gash/fiberglass/moderate/1.png",
+	    			"description": "A fiberglass boat hull with a moderate gash in the gelcoat",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "A fiberglass boat hull with a deep gash exposing fiberglass layers, realistic marine photography, angled side view",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"severe",
+	    			"source": "gash/fiberglass/severe/0.png",
+	    			"description": "A fiberglass boat hull with a severe gash in the gelcoat",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+            				"prompt": "A fiberglass boat hull with a large severe gash exposing core material, jagged edges, realistic marine photography, damaged vessel at a marina",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"severe",
+	    			"source": "gash/fiberglass/severe/1.png",
+	    			"description": "A fiberglass boat hull with a severe gash in the gelcoat",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "A fiberglass boat hull with a large severe gash exposing core material, jagged edges, realistic marine photography, damaged vessel at a marina",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"minor",
+	    			"source": "gash/steel/minor/0.png",
+	    			"description": "A steel boat hull with a small surface gash",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a small surface gash in the plating. {base_description} The gash is shallow and non-penetrating, with some paint damage. Realistic marine photography, close-up view.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"minor",
+	    			"source": "gash/steel/minor/1.png",
+	    			"description": "A steel boat hull with a small surface gash",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a small surface gash in the plating. {base_description} The gash is shallow and non-penetrating, with some paint damage. Realistic marine photography, close-up view.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "gash/steel/moderate/0.png",
+	    			"description": "A steel boat hull with a moderate gash",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a moderate gash tearing through the plating, exposing inner structure. {base_description} The gash shows jagged edges and some deformation around the tear. Realistic marine photography, side view at dock.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "gash/steel/moderate/1.png",
+	    			"description": "A steel boat hull with a moderate gash",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a moderate gash tearing through the plating, exposing inner structure. {base_description} The gash shows jagged edges and some deformation around the tear. Realistic marine photography, side view at dock.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "gash/steel/moderate/2.png",
+	    			"description": "A steel boat hull with a moderate gash",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a moderate gash tearing through the plating, exposing inner structure. {base_description} The gash shows jagged edges and some deformation around the tear. Realistic marine photography, side view at dock.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "gash/steel/moderate/3.png",
+	    			"description": "A steel boat hull with a moderate gash",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a moderate gash tearing through the plating, exposing inner structure. {base_description} The gash shows jagged edges and some deformation around the tear. Realistic marine photography, side view at dock.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "gash/steel/severe/1.jpg",
+	    			"description": "A steel boat hull with severe gash.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a large severe gash penetrating through the plating, exposing internal frames. {base_description} The damage is extensive, jagged, and clearly from a major collision. Realistic marine photography, shipyard inspection angle.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "gash/steel/severe/2.png",
+	    			"description": "A steel boat hull with severe gash.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a large severe gash penetrating through the plating, exposing internal frames. {base_description} The damage is extensive, jagged, and clearly from a major collision. Realistic marine photography, shipyard inspection angle.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "gash/steel/severe/3.png",
+	    			"description": "A steel boat hull with severe gash.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
+            				"prompt": "Steel ship hull with a large severe gash penetrating through the plating, exposing internal frames. {base_description} The damage is extensive, jagged, and clearly from a major collision. Realistic marine photography, shipyard inspection angle.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		}
+	    	]
+	    },
+	    {
+			"label":"buckling",
+			"name": "buckling",
+			"synonyms": null,
+			"material": ["steel", "fiberglass"],
+			"description": "Out-of-plane deformation of hull plating or stiffeners caused by compressive stresses exceeding critical limits. Buckling reduces structural capacity and may indicate underlying damage or design weakness.",
+			"faqs": [{
+				"description": "what is buckling?",
+				"common-causes": "what are some common causes of buckling?",
+				"visual-cues": "how can buckling be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for buckling?",
+				"recommendations": "how can I address buckling defects?"
+			}],
+			"common-causes": [{"variant": "steel",
+	    		               "causes": ["Excessive compressive stress (e.g., grounding, collision forces)",
+        								  "Overloading or improper cargo distribution",
+        								  "Thermal stresses (rapid heating/cooling)",
+                                          "Weld-induced residual stresses",
+                                          "Corrosion-induced thinning leading to reduced buckling resistance"]}, 
+	    		               {"variant": "fiberglass", 
+	    		               	"causes": ["Impact or point loading on unsupported laminate areas",
+        								   "Excessive flexing due to undersized laminate/core",
+                                           "Water ingress and core degradation leading to soft spots",
+                                           "Improper repairs or layup during construction"]
+	    		               }],
+	    	"visual-cues": [{"variant": "steel", 
+	    		             "cues": ["Wavy, rippled, or folded plating between stiffeners",
+        							  "Localized bulging or caving inward/outward",
+        							  "Distorted weld seams or misaligned frames",
+        							  "Coating cracks or flaking along deformation ridges"]}, 
+	    		             {"variant": "fiberglass", 
+	    		              "cues": ["Localized bulging or depressions in laminate surface",
+        							   "Permanent distortion that does not spring back",
+        							    "Cracks or delamination at edges of buckled area",
+        								"Surface waviness visible under grazing light"]
+	    		            }],
+	    	"inspection-notes": [{"variant": "steel", 
+			                      "notes":["Measure deflection depth and extent of deformed panel",
+        								   "Check adjacent stiffeners and frames for secondary distortion",
+        								   "Use ultrasonic thickness measurement to confirm plate strength",
+        								   "Pay attention to buckling in bottom shell and side shell plating under heavy loads"]
+			                     },
+				                {"variant":"fiberglass", 
+	    		                  "notes":["Tap test to identify hollow/debonded areas",
+        								   "Check for moisture in core with moisture meter",
+                                           "Press test to evaluate stiffness of laminate",
+                                           "Inspect from oblique angles to highlight waviness"]
+	    		                }],
+			"recommendations": [
+				{"variant": "steel", "summary": null, "considerations": null,
+				  "minor":{
+				  	"criteria": ["Slight waviness with no significant impact on strength; often cosmetic in non-critical panels."],
+				  	"actions": ["Monitor during routine surveys; if coating is damaged, clean, fair, and reapply anti-corrosion protection."]
+				  },
+				  "moderate": {
+				  	"criteria": ["Visible out-of-plane deformation affecting local stiffness; potential stress concentration near welds or stiffeners."],
+				  	"actions": ["Mechanical straightening (cold work), weld build-up or insert plates to restore alignment. NDT check for cracks. Class surveyor review recommended."]
+				  },
+				  "severe": {
+				  	"criteria": ["Severe buckling with loss of plate or stiffener load-bearing capacity; may threaten watertight integrity or global hull strength."],
+				  	"actions": ["Cut out and replace affected plating/stiffeners. Full structural repair in shipyard under class society rules. Immediate attention if below waterline or near critical structural members."]
+				  }	
+				},
+				{
+	    		"variant": "fiberglass",
+	    		"summary":null,
+	    		"minor": {"criteria": ["Superficial waviness in gelcoat with no core or laminate compromise."], 
+	    		          "actions": ["Cosmetic fairing and refinishing. Monitor for progression."]},
+	    		"moderate":{"criteria": ["Laminate distortion with core crushing or localized delamination."],
+	    		            "actions":["Cut out damaged laminate/core, rebuild using fiberglass/epoxy layup, fair and refinish. Structural surveyor involvement recommended."]},
+	    		"severe": {"criteria": ["Large-scale panel buckling affecting structural integrity of hull section."],
+	    		           "actions": ["Professional rebuild with replacement of core and laminate layers. Use vacuum bagging or infusion to restore stiffness. Naval architect consultation may be required."]},
+	    		"considerations": null
+	    	}],
+			"refs": ["https://www.albernipowermarine.com/blog/fiberglass-boat-repair-5-most-common-issues-and-their-solutions"],
+			"images": [
+				{
+	    			"variant":"steel",
+	    			"severity":"minor",
+	    			"source": "buckling/steel/minor/0.png",
+	    			"description": "A steel boat hull with minor buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with minor buckling, small bulges in the plating between stiffeners. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, close-up inspection of hull surface at dockside.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"minor",
+	    			"source": "buckling/steel/minor/1.png",
+	    			"description": "A steel boat hull with minor buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with minor buckling, small bulges in the plating between stiffeners. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, close-up inspection of hull surface at dockside.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "buckling/steel/moderate/0.png",
+	    			"description": "A steel boat hull with moderate buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with moderate buckling, noticeable deformation of plating panels with waviness between structural supports. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic shipyard inspection angle, deformation clearly visible across a wider section of the hull.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "buckling/steel/moderate/1.png",
+	    			"description": "A steel boat hull with moderate buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with moderate buckling, noticeable deformation of plating panels with waviness between structural supports. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic shipyard inspection angle, deformation clearly visible across a wider section of the hull.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"moderate",
+	    			"source": "buckling/steel/moderate/2.png",
+	    			"description": "A steel boat hull with moderate buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with moderate buckling, noticeable deformation of plating panels with waviness between structural supports. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic shipyard inspection angle, deformation clearly visible across a wider section of the hull.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "buckling/steel/severe/0.png",
+	    			"description": "A steel boat hull with severe buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with severe buckling, large panel collapse and distorted plating with visible structural stress. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, inspection of vessel in dry dock, major damage clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "buckling/steel/severe/1.png",
+	    			"description": "A steel boat hull with severe buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "Steel ship hull with severe buckling, large panel collapse and distorted plating with visible structural stress. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, inspection of vessel in dry dock, major damage clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"minor",
+	    			"source": "buckling/fiberglass/minor/0.png",
+	    			"description": "A fiberglass boat hull with minor buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "fiberglass ship hull with minor buckling, small bulges in the plating between stiffeners. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, close-up inspection of hull surface at dockside.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"minor",
+	    			"source": "buckling/fiberglass/minor/1.png",
+	    			"description": "A fiberglass boat hull with minor buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "fiberglass ship hull with minor buckling, small bulges in the plating between stiffeners. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, close-up inspection of hull surface at dockside.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"moderate",
+	    			"source": "buckling/fiberglass/moderate/0.png",
+	    			"description": "A fiberglass boat hull with moderate buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "fiberglass ship hull with moderate buckling, noticeable deformation of plating panels with waviness between structural supports. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic shipyard inspection angle, deformation clearly visible across a wider section of the hull.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"moderate",
+	    			"source": "buckling/fiberglass/moderate/1.png",
+	    			"description": "A fiberglass boat hull with moderate buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "fiberglass ship hull with moderate buckling, noticeable deformation of plating panels with waviness between structural supports. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic shipyard inspection angle, deformation clearly visible across a wider section of the hull.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"severe",
+	    			"source": "buckling/fiberglass/severe/0.png",
+	    			"description": "A fiberglass boat hull with severe buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "fiberglass ship hull with severe buckling, large panel collapse and distorted plating with visible structural stress. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, inspection of vessel in dry dock, major damage clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity":"severe",
+	    			"source": "buckling/fiberglass/severe/1.png",
+	    			"description": "A fiberglass boat hull with severe buckling.",
+	    			"refs":{
+	    				"source": "stable-diffusion",
+	    				"input": {
+            				"prompt": "fiberglass ship hull with severe buckling, large panel collapse and distorted plating with visible structural stress. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, inspection of vessel in dry dock, major damage clearly visible.",
+				            "width": 768,
+				            "height": 512,
+				            "num_outputs": 2,  
+				            "scheduler": "K_EULER",
+				            "guidance_scale": 7.5,
+				            "num_inference_steps": 50
+                        }
+	    			}
+	    		}
+			]
+	    },
+	    {
+			"label":"blister",
+			"name": "blister",
+			"synonyms": null,
+			"material": ["fiberglass"],
+			"description": "Formation of fluid-filled blisters beneath the gelcoat or laminate surface, caused by water ingress and chemical reactions (osmosis). Over time, blistering can compromise laminate integrity and reduce hull value.",
+			"faqs": [{
+				"description": "what is a blister?",
+				"common-causes": "what are some common causes of blisters?",
+				"visual-cues": "how can blisters be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for blisters?",
+				"recommendations": "how can I address blister defects?"
+			}],
+			"common-causes": [
+	    		               {"variant": "fiberglass", 
+	    		               	"causes": ["Water ingress through gelcoat, microcracks and pores",
+        								   "Hydrolysis of resins leading to acidic fluid formation",
+        								   "Poor layup or resin quality during construction",
+        								  "Prolonged immersion without protective barrier coatings",
+        								  "Inadequate repairs with non-marine-grade resins"]
+	    		               }],
+	    	"visual-cues": [
+	    		             {"variant": "fiberglass", 
+	    		              "cues": ["Raised, dome-shaped blisters on gelcoat surface",
+        							   "Clusters of small blisters or isolated large ones",
+                                       "Fluid discharge when blister is punctured (acidic, vinegary smell)",
+        							   "Surface roughness, pitting after blister rupture",
+                                       "Discoloration or moisture staining around affected area"]
+	    		            }],
+	    	"inspection-notes": [
+				                {"variant":"fiberglass", 
+	    		                  "notes":["Use moisture meter to assess hull saturation",
+        								   "Tap test can detect hollow areas under blisters",
+        								   "Cut open blister to examine fluid and underlying laminate",
+        								   "Survey both below waterline and topsides (osmosis is more common below waterline)"]
+	    		                }],
+
+			"recommendations": [
+				{
+	    		"variant": "fiberglass",
+	    		"summary":null,
+	    		"minor": {"criteria": ["Few isolated small blisters, limited to gelcoat, cosmetic impact only."], 
+	    		          "actions": ["Monitor; for cosmetic repair, grind out blister, dry, fill with epoxy filler, sand, and re-gelcoat."]},
+	    		"moderate":{"criteria": ["Clusters of blisters, some penetrating outer laminate layers, local weakening of surface."],
+	    		            "actions":["Remove blisters in affected area, allow hull to dry thoroughly, apply epoxy barrier coat and fairing compound. Moisture meter check advised."]},
+	    		"severe": {"criteria": ["Widespread blistering over large hull areas, penetrating laminate, with structural weakening and possible delamination."],
+	    		           "actions": ["Full osmosis treatment: strip gelcoat (peel or blast), dry hull (weeks–months), rebuild with epoxy laminates and barrier coats. Professional yard repair mandatory."]},
+	    		"considerations": null
+	    	}],
+			"refs": ["https://www.albernipowermarine.com/blog/fiberglass-boat-repair-5-most-common-issues-and-their-solutions"],
+			"images": [
+				{
+					"variant":"fiberglass",
+					"severity": "minor",
+	    			"source": "blister/fiberglass/minor/1.png",
+	    			"description": "A number of broken blisters on the hull gel coat.",
+	    			"refs": "FYS_SURVEY_REPORT_Hallberg_Rassy_42_issue_1.pdf"
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity": "moderate",
+	    			"source": "blister/fiberglass/moderate/3.jpeg",
+	    			"description": "Blisters on a fiberglass boat hull.",
+	    			"refs": "https://wavetrain.net/2011/01/19/fiberglass-boatbuilding-the-origins-of-blisters/"
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity": "severe",
+	    			"source": "blister/fiberglass/severe/4.jpeg",
+	    			"description": "Blisters on a fiberglass boat hull.",
+	    			"refs": "https://www.cruisersforum.com/forums/f55/fiberglass-blistering-still-a-problem-on-modern-boats-219516.html"
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity": "severe",
+	    			"source": "blister/fiberglass/severe/5.jpeg",
+	    			"description": "Opened blisters after gel-coat removed.",
+	    			"refs": "https://goodoldboat.com/blister-bottom/"
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity": "severe",
+	    			"source": "blister/fiberglass/severe/6.jpg",
+	    			"description": "Blisters and voids filled and roughly faired (note large filled area at the waterline).",
+	    			"refs": "https://goodoldboat.com/blister-bottom/"
+	    		},
+	    		{
+	    			"variant":"fiberglass",
+	    			"severity": "moderate",
+	    			"source": "blister/fiberglass/moderate/7.jpg",
+	    			"description": "Blisters in keel housing.",
+	    			"refs": "https://goodoldboat.com/blister-bottom/"
+	    		},
+				{
+					"variant":"fiberglass",
+	    			"severity": "minor",
+	    			"source": "blister/fiberglass/minor/8.jpeg",
+	    			"description": "Close-up view of boat blistering on the vessel hull.",
+	    			"refs": "https://lotolift.com/boat-blisters-the-causes-repair-solutions-and-the-ultimate-prevention/"
+	    		}
+			]
+	    },
+	    {
+	    	"label": "delamination",
+	    	"name": "delamination",
+	    	"synonyms": null,
+	    	"material": ["fiberglass"],
+	    	"description": "Sometimes, due to physical damage to the hull or water intrusion, the layers of fiberglass material begin to separate from one another. This issue, known as delamination, affects the integrity of the boat’s structure and may lead to more severe problems if not promptly addressed.",
+	    	"faqs": [{
+				"description": "what is a delamination?",
+				"common-causes": "what are some common causes of delamination?",
+				"visual-cues": "how can delamination be detected visually?",
+				"inspection-notes": "how can I inspect a vessel for delamination?",
+				"recommendations": "how can I address delamination defects?"
+			}],
+			"common-causes":[{
+	    		"variant":"fiberglass",
+	    		"causes":["Water ingress into core (through cracks, fittings, poor sealing)",
+    					  "Freeze-thaw cycles expanding trapped moisture",
+                          "Impact damage leading to bond failure",
+                          "Poor resin cure or air entrapment during construction",
+                          "Excessive heat or UV degradation over time"]
+	    	}],
+	    	"visual-cues": [{"variant":"fiberglass", 
+	    	                 "cues":["Blisters or bubbles under gelcoat",
+                                     "Localized bulges or depressions",
+                                     "Uneven or wavy hull surface",
+                                     "Moisture staining or discoloration",
+                                     "Spider cracks radiating from affected area"]}],
+	    	"inspection-notes":[{
+	    		"variant":"fiberglass",
+	    		"notes": ["Not always visible — use percussion (tap) test: dull sound indicates delamination",
+                          "Infrared thermography can reveal heat dissipation anomalies",
+                          "Moisture meter helps detect waterlogged cores",
+                          "Delamination near keel, stringers, or bulkheads is high-risk"
+                        ]
+	    	}],
+	    	"recommendations": [{
+	    		"variant": "fiberglass",
+	    		"summary": "Remove the damaged section of fiberglass material to access the area between the layers. When you see the impacted area, clean it thoroughly and allow it to dry. Apply a marine-grade epoxy resin between the layers. Clamp the layers together to ensure a strong bond. After the epoxy has cured, reapply the fiberglass layers, sand the area smoothly, and finish with a gel coat to match the surrounding surface. For large or critical areas, take help from an experienced boat dealer with efficient staff to ensure the repair is done correctly.",
+	    		"minor": {
+	    			"criteria":["Small blister or localized surface delamination, no major structural risk."],
+	    			"actions": ["Grind out blistered area, dry thoroughly, fill with epoxy resin and fiberglass cloth, refinish with gelcoat."]
+	    		},
+	    		"moderate": {
+	    			"criteria":["Localized delamination extending into core or multiple laminate layers, affecting stiffness."],
+	    			"actions":["Cut out affected laminate, dry or replace damaged core, rebuild with fiberglass/epoxy layup. Fair and refinish. Surveyor inspection advised."]
+	    		},
+	    		"severe": {
+	    			"criteria":["Widespread delamination across hull sections, hull flexing under load, compromised structural strength."],
+	    			"actions":["Major structural repair in professional yard. Remove and replace core material, rebuild laminate using vacuum bagging or infusion. Naval architect involvement recommended."]
+	    		},
+	    		"considerations": null
+	    	}],
+	    	"refs": ["https://www.albernipowermarine.com/blog/fiberglass-boat-repair-5-most-common-issues-and-their-solutions"],
+			"images": [
+				{
+					"variant": "fiberglass",
+					"severity": "minor",
+	    			"source": "crack/fiberglass/minor/1.png",
+	    			"description": "A spider-crack formation that possibly implies  delamination of the fiberglass.",
+	    			"refs": "FYS_SURVEY_REPORT_SAGA-29_issue_1 (1).pdf"
+	    		},
+	    		{
+					"variant": "fiberglass",
+					"severity": "moderate",
+	    			"source": "crack/fiberglass/moderate/4.png",
+	    			"description": "A spider-crack formation that possibly implies  delamination of the fiberglass.",
+	    			"refs": null
+	    		}
+			]
+	    }
+	],
+	"causes":[
+		{
+			"label":"mechanical-stress",
+			"name": "mechanical stress",
+			"synonyms": ["fatigue"],
+			"description": "Repeated loading, such as wave impacts on the hull, can lead to fatigue cracks and structural failures"
+		},
+		{
+			"label":"environmental-factor",
+			"name": "environmental factor",
+			"description": "Saltwater is highly corrosive, leading to degradation of steel hulls"
+		},
+		{
+			"label": "grounding",
+			"name": "grounding",
+			"description": "Collisions with other vessels or grounding on the seabed can cause significant damage, including holes and dents"
+		},
+		{
+			"label": "design-and-construction-faults",
+			"name": "Design and Construction Faults",
+			"description": "Poorly designed hull-to-deck joints and inadequate internal framing can lead to stress cracking and panting (flopping of hull sides)"
+		}
+	]
+}
