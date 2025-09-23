@@ -31,28 +31,6 @@ if __name__ == '__main__':
     summary_prompt = load_document(SUMMARY_PROMPT_PATH)
     defect_prompt = load_document(DEFECT_PROMPT_PATH)
 
-    # # read the image and create the embeddings
-    # # load the image
-    # image = Image.open(img_path)
-    #
-    # img_embedding = normalize(clip_model.encode(image))
-    # text_embedding = normalize(clip_model.encode("this image shows a crack on gel-coat"))
-    #
-    # results = retriever.multistage_retrieval(
-    #     query="What's in this image?",
-    #     image_embeddings=img_embedding,
-    #     text_embeddings=text_embedding,
-    #     images_repository="defects_images", text_repository='defects_texts',
-    #     vector_db=chromadb_wrapper,
-    #     top_img=15,
-    #     top_final=5,
-    #     w_img=0.7,
-    #     w_txt=0.3
-    # )
-    #
-    # for r in results:
-    #     print(f"ID: {r['id']} | Score: {r['score']:.4f} | Defect: {r['metadata']['label']} | Desc: {r['description']}")
-
     ollama_result = call_ollama(image_path=img_path,
                                 summary_prompt=summary_prompt,
                                 defect_prompt=defect_prompt,

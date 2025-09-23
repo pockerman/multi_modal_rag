@@ -57,6 +57,8 @@ def call_ollama(image_path: str | Path, image_caption: str | None,
                 n_tries: int = 3, timeout: float = 60.0,
                 w_img: float = 0.7, w_txt: float = 0.3,
                 top_img: int = 15, top_final: int = 5) -> dict:
+    # import pdb;
+    # pdb.set_trace()
     url = ollama_path + "api/generate"
 
     # read the image and create the embeddings

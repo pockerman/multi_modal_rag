@@ -110,7 +110,14 @@ class HybridWeightedFusion:
         candidates = []
         for doc_id, score in fused_sorted[: top_final * 2]:  # keep buffer for reranking
             meta = image_collection.get(ids=[doc_id])["metadatas"][0]
-            desc = text_collection.get(ids=[doc_id])["documents"][0]
+
+
+            desc = None
+            # we may not find a description
+            text_documents = text_collection.get(ids=[doc_id])
+            if len(text_documents["documents"]) != 0:
+                desc = text_documents["documents"][0]
+
             candidates.append({
                 "id": doc_id,
                 "score": float(score),

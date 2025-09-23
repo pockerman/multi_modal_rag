@@ -1484,5 +1484,11 @@
 			"name": "Design and Construction Faults",
 			"description": "Poorly designed hull-to-deck joints and inadequate internal framing can lead to stress cracking and panting (flopping of hull sides)"
 		}
+	],
+	"resources": [
+		{
+			"label": "corrosion",
+			"link": "https://partsvu.com/blogs/boating-resources/marine-corrosion-corrosion-types-and-what-to-do-about-them"
+		}
 	]
 }
