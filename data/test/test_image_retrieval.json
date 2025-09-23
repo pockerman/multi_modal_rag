@@ -1,0 +1,49 @@
+{
+
+  "corrosion": [
+    {
+      "img": "1.png",
+      "description": "corrosion on the edges of the metalic plate surrounding the anchor",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "2.jpeg",
+      "description": "corrosion on a three blade propeller",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "3.jpeg",
+      "description": "corrosion on a two blade propeller",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "4.jpeg",
+      "description": "corrosion on a three blade propeller",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "5.jpeg",
+      "description": "extensive corrosion on the hull of a vessel",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "6.jpeg",
+      "description": "extensive corrosion on the hull of a vessel. Moderate corrosion on the anchor",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "7.jpeg",
+      "description": "extensive corrosion on the propeller of a vessel.",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    }
+
+  ]
+
+}
