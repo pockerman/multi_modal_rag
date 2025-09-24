@@ -72,6 +72,49 @@ OLLAMA_HOST=0.0.0.0 OLLAMA_PORT=11434 ollama serve
 Run the script ```evaluate_query_classifier.py``` by default the script loads the ```data/test/test_query_classifier.json``` data
 and runs ```mistral``` as an LLM. It also uses the prompt in ```prompts/query_classifier/query_classifier.txt```
 
+### Assess the image retrieval
+
+Run the script ```evaluate_image_retrieval.py``` by default the script loads the test images in ```data/test/test_image_retrieval.json```.
+The test image files are in ```data/test/hull_defects_imgs```. The following metrics have been implemented:
+
+- Recall@k
+- Precision@k
+
+
+#### Why corrosion precision may be low
+
+- Visual ambiguity
+    - Corrosion can look like stains, paint blistering, or fouling. Models might confuse it with osmosis/blistering or surface cracks.
+
+- Dataset imbalance
+    - If you have fewer labeled corrosion images than other defect types, embeddings won’t represent corrosion well.
+
+- Embedding quality
+    - The image encoder (e.g., CLIP, ViT) may not capture fine-grained texture cues (rust patterns, pitting, discoloration).
+
+- Indexing granularity
+    - If your chunks combine corrosion with surrounding non-defective areas, retrieval noise increases
+
+#### How to Improve Precision
+
+
+- Data improvements
+    - Collect more diverse examples (different severities, colors, environments).
+    - Use data augmentation: color jitter, contrast changes, texture overlays to mimic rust patterns.
+
+Better negative sampling
+
+During fine-tuning, ensure corrosion is contrasted against visually similar but distinct defects (e.g., blistering, algae stains).
+
+- Cross-modal reranking
+    - Use a cross-encoder stage (e.g., CLIP cross-encoder or ViLT) to rerank top-20 candidates → boosts precision@5.
+
+- Modality fusion
+  - If the user provides text (e.g., “orange-brown rust spots”), fuse text + image retrieval. This helps disambiguate corrosion vs. blistering.
+
+- Fine-grained classification after retrieval
+  - After retrieval, pass candidates to a corrosion-vs-non-corrosion classifier. Acts as a filter to clean up top-k results.
+
 ## References
 
 1. <a href="https://huyenchip.com/2023/10/10/multimodal.html">Multimodality and Large Multimodal Models (LMMs)</a>  

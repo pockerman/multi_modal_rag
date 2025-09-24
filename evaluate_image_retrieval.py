@@ -2,14 +2,12 @@ from pathlib import Path
 from sentence_transformers import SentenceTransformer
 from PIL import Image
 
-from src.hybrid_weighted_fusion import HybridWeightedFusion
 from src.utils import read_json
-from src.utils import load_document
-from src.query_utils import call_ollama, normalize
+from src.query_utils import normalize
 from src.chromadb_wrapper import ChromaDBHttpWrapper
 
 
-def precision_at_k(results: dict[str, dict], ground_truth_label: str, k):
+def precision_at_k(results: dict[str, dict], ground_truth_label: str, k: int):
     """
     retrieved: list of defect labels returned by the system
     ground_truth: correct defect label (string) or list of valid labels
@@ -21,7 +19,25 @@ def precision_at_k(results: dict[str, dict], ground_truth_label: str, k):
     for img in results:
         retrieve_result = results[img]['retrieve_result']
         relevant = sum(1 for r in retrieve_result if r[0] == ground_truth_label)
-        print(f'Precision at k={k} for image={img} is {relevant / k}')
+        print(f'Precision@{k} for image={img} is {relevant / k:0.2f}')
+
+
+def recall_at_k(results: dict[str, dict], ground_truth_label: str, ground_truth_set_size: int,  k: int):
+    """
+    retrieved: list of defect labels returned by the system
+    ground_truth_set: set of all relevant labels for the query
+                      (e.g., all corrosion images for corrosion query)
+    k: cutoff rank
+
+    Returns recall@k
+    """
+
+    relevant = 0.0
+    for img in results:
+        retrieve_result = results[img]['retrieve_result']
+        relevant = sum(1 for r in retrieve_result if r[0] == ground_truth_label)
+
+        print(f'Recall@{k} for image={img} is {relevant/float(ground_truth_set_size):0.2f}')
 
 
 if __name__ == '__main__':
@@ -34,9 +50,6 @@ if __name__ == '__main__':
     TEST_DIRS = ['corrosion', 'crack']
     TEST_IMGS_INFO = DATA_PATH / "test/test_image_retrieval.json"
 
-    SUMMARY_PROMPT_PATH = PROMPTS_PATH / "v6_summary.txt"
-    DEFECT_PROMPT_PATH = PROMPTS_PATH / "v6_from_summary.txt"
-
     # CLIP model for both text & hull_defects_imgs
     clip_model = SentenceTransformer("clip-ViT-L-14")
 
@@ -44,9 +57,6 @@ if __name__ == '__main__':
 
     # read the test images
     test_queries = read_json(TEST_IMGS_INFO)
-
-    summary_prompt = load_document(SUMMARY_PROMPT_PATH)
-    defect_prompt = load_document(DEFECT_PROMPT_PATH)
 
     print("Loaded test images...")
 
@@ -89,3 +99,5 @@ if __name__ == '__main__':
         print(results)
 
         precision_at_k(results=results, ground_truth_label=label, k=N_RESULTS)
+        recall_at_k(results=results, ground_truth_label=label,
+                    k=N_RESULTS, ground_truth_set_size=len(label_images))
