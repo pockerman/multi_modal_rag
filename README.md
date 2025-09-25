@@ -77,8 +77,10 @@ and runs ```mistral``` as an LLM. It also uses the prompt in ```prompts/query_cl
 Run the script ```evaluate_image_retrieval.py``` by default the script loads the test images in ```data/test/test_image_retrieval.json```.
 The test image files are in ```data/test/hull_defects_imgs```. The following metrics have been implemented:
 
-- Recall@k
-- Precision@k
+- Precision@k: How many of the top k retrieved documents are relevant?
+- Recall@k: How many of all relevant documents were retrieved in the top k?
+- Mean Reciprocal Rank or MRR: Measures the rank position of the first relevant document.
+- Normalized Discounted Cumulative Gain or NDCG: Weighs relevance based on position in the ranked list.
 
 
 #### Why corrosion precision may be low
