@@ -117,6 +117,15 @@ During fine-tuning, ensure corrosion is contrasted against visually similar but 
 - Fine-grained classification after retrieval
   - After retrieval, pass candidates to a corrosion-vs-non-corrosion classifier. Acts as a filter to clean up top-k results.
 
+### Generating missing images
+
+You can use the script ```data/synthetic_img_stable_diffusion.py``` to generate images from defect descriptions.
+The script uses <a href="https://replicate.com/">Replicate</a> so you need to 
+
+```commandline
+export REPLICATE_API_TOKEN="your-replicate-token"
+```
+
 ## References
 
 1. <a href="https://huyenchip.com/2023/10/10/multimodal.html">Multimodality and Large Multimodal Models (LMMs)</a>  

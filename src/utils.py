@@ -1,5 +1,5 @@
 import json
-#import re
+# import re
 import regex as re
 from pathlib import Path
 
@@ -8,6 +8,11 @@ def read_json(filename: Path) -> dict:
     with open(filename, "r", encoding="utf-8") as f:
         data = json.load(f)
         return data
+
+
+def write_json(data: dict, filename: Path) -> None:
+    with open(filename, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=4)
 
 
 def load_document(filename: Path) -> str:

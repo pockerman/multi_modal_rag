@@ -2,13 +2,13 @@ import replicate
 
 
 
-prompt="Fiberglass ship hull with severe buckling, large panel collapse and distorted plating with visible structural stress. Buckling is the structural deformation of the hull plating, where panels bend, bulge, or collapse under stress, typically due to compressive forces or impact. Realistic marine photography, inspection of vessel in dry dock, major damage clearly visible."
+prompt="Steel ship hull with a severe dent, large deformation in plating with distortion of surrounding frames. A dent is a depression or inward deformation of the hull surface, typically caused by an impact or collision, without necessarily breaking through the material. Realistic marine photography, shipyard inspection angle, damage clearly from a major collision."
 
 input={
             "prompt": prompt,
             "width": 768,
             "height": 512,
-            "num_outputs": 2,  # generate 2 variations per severity
+            "num_outputs": 4,  # generate 2 variations per severity
             "scheduler": "K_EULER",
             "guidance_scale": 7.5,
             "num_inference_steps": 50

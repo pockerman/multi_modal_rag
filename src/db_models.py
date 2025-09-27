@@ -23,17 +23,7 @@ class ImageModel(BaseModel):
 
         img_path = data['img_path']
 
-        # load the image
-        image = Image.open(img_path)
-
-        if to_rgb:
-            image = image.convert('RGB')
-
-        if normalize:
-            img_embedding = normalize(image_encoder.encode(image))
-            img_embedding = img_embedding.tolist()
-        else:
-            img_embedding = image_encoder.encode(image)
+        img_embedding = image_encoder.embed_image(img_path)
 
         return ImageModel(uid=img_id, description=description, source=source,
                           hull_material=hull_material, defect_label=defect_label,

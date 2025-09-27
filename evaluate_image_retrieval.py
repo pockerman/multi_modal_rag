@@ -1,14 +1,16 @@
 from pathlib import Path
-from sentence_transformers import SentenceTransformer
-from PIL import Image
+from statistics import mean
 import math
+from collections import defaultdict
+from src.utils import read_json, write_json
 
-from src.utils import read_json
-from src.query_utils import normalize
 from src.chromadb_wrapper import ChromaDBHttpWrapper
+from src.openclip_embedding import OpenCipEmbeddings
+from src.sentence_transformer_embedding import SentenceTransformerEmbeddings
 
 
-def precision_at_k(results: dict[str, dict], ground_truth_label: str, k: int):
+def precision_at_k(results: dict[str, dict],
+                   ground_truth_label: str, k: int) -> dict[str, float]:
     """
     retrieved: list of defect labels returned by the system
     ground_truth: correct defect label (string) or list of valid labels
@@ -17,14 +19,17 @@ def precision_at_k(results: dict[str, dict], ground_truth_label: str, k: int):
     Returns precision@k
     """
 
+    precision_dict = {}
     for img in results:
         retrieve_result = results[img]['retrieve_result']
         relevant = sum(1 for r in retrieve_result if r[0] == ground_truth_label)
+        precision_dict[img] = relevant / k
         print(f'Precision@{k} for image={img} is {relevant / k:0.2f}')
+    return precision_dict
 
 
 def recall_at_k(results: dict[str, dict], ground_truth_label: str,
-                ground_truth_set_size: int, k: int) -> dict[str,float]:
+                ground_truth_set_size: int, k: int) -> dict[str, float]:
     """
     retrieved: list of defect labels returned by the system
     ground_truth_set: set of all relevant labels for the query
@@ -38,7 +43,7 @@ def recall_at_k(results: dict[str, dict], ground_truth_label: str,
     for img in results:
         retrieve_result = results[img]['retrieve_result']
         relevant = sum(1 for r in retrieve_result if r[0] == ground_truth_label)
-        recall_dict[img] = relevant
+        recall_dict[img] = relevant / float(ground_truth_set_size)
         print(f'Recall@{k} for image={img} is {relevant / float(ground_truth_set_size):0.2f}')
     return recall_dict
 
@@ -72,14 +77,13 @@ def mean_reciprocal_rank(results: dict[str, dict], ground_truth_label: str) -> f
     return mrr
 
 
-
-def dcg_at_k(relevances, k: int ):
+def dcg_at_k(relevances, k: int):
     """
     relevances: list of relevance scores in ranked order (highest rank first)
     k: cutoff
     """
     relevances = relevances[:k]
-    return sum((2**rel - 1) / math.log2(idx + 2) for idx, rel in enumerate(relevances))
+    return sum((2 ** rel - 1) / math.log2(idx + 2) for idx, rel in enumerate(relevances))
 
 
 def ndcg_at_k(results: dict[str, dict], ground_truth_label: str, k: int):
@@ -108,24 +112,129 @@ def ndcg_at_k(results: dict[str, dict], ground_truth_label: str, k: int):
     return ndcg_dict
 
 
+# def reciprocal_rank_fusion(results_list, k: int, top_n: int):
+#     """
+#     Perform Reciprocal Rank Fusion (RRF).
+#
+#     Args:
+#         results_list: list of ranked result lists from different retrievers.
+#                       Each list contains document IDs in order of relevance.
+#         k: smoothing constant
+#         top_n: number of final results to return
+#
+#     Returns:
+#         List of (doc_id, rrf_score) sorted by score.
+#     """
+#     scores = defaultdict(float)
+#
+#     for result in results_list:
+#         for rank, doc_id in enumerate(result, start=1):
+#             scores[doc_id] += 1.0 / (k + rank)
+#
+#     # Sort by score (descending) and return top_n
+#     fused_results = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
+#     return fused_results
+
+#from collections import defaultdict
+
+
+def reciprocal_rank_fusion(results_list, k=60, top_n=5):
+    """
+    Perform Reciprocal Rank Fusion (RRF) on ChromaDB query results.
+
+    Args:
+        results_dicts: list of ChromaDB query outputs (dicts).
+        k: smoothing constant
+        top_n: number of final results to return
+
+    Returns:
+        dict in ChromaDB-like format with fused ranking.
+    """
+    scores = defaultdict(float)
+    metadata_map = {}
+    doc_map = {}
+    distance_map = defaultdict(list)
+    for results in results_list:
+        ids = results["ids"][0]  # list of IDs
+        metas = results.get("metadatas", [[]])[0]
+        docs = results.get("documents", [[]])[0]
+        distances = results.get("distances", [[]])[0] if "distances" in results else []
+
+        for rank, doc_id in enumerate(ids, start=1):
+            scores[doc_id] += 1.0 / (k + rank)
+            idx = rank - 1
+            # Store metadata/docs if not already
+            if doc_id not in metadata_map and metas:
+                metadata_map[doc_id] = metas[rank - 1]
+            if doc_id not in doc_map and docs:
+                doc_map[doc_id] = docs[rank - 1]
+
+            if distances:
+                try:
+                    distance_map[doc_id].append(distances[idx])
+                except IndexError:
+                    # distance list might be shorter; just skip
+                    pass
+
+    # Sort by score
+    fused_ids = [doc_id for doc_id, _ in sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_n]]
+    fused_scores = [scores[doc_id] for doc_id in fused_ids]
+    fused_metas = [metadata_map.get(doc_id) for doc_id in fused_ids]
+    fused_docs = [doc_map.get(doc_id) for doc_id in fused_ids]
+    # aggregated distances: mean of observed distances (or None if none available)
+    fused_distances = []
+    for doc_id in fused_ids:
+        vals = distance_map.get(doc_id)
+        if vals:
+            fused_distances.append(mean(vals))
+        else:
+            fused_distances.append(None)  # or a sentinel like float('inf')
+
+    return {
+        "ids": [fused_ids],
+        "rrf_scores": [fused_scores],  # note: RRF scores, not Chroma distances
+        "metadatas": [fused_metas],
+        "documents": [fused_docs],
+        'distances': [fused_distances]
+    }
+
+
 if __name__ == '__main__':
-    N_RESULTS = 5
+    N_TOP_RESULTS = 5
+    N_DOCS_FOR_RETRIEVE = 5
+    SMOOTH_CONSTANT = 60
+    RESULTS_FILE_INDEX = 8
 
     DATA_PATH = Path('./data')
-    PROMPTS_PATH = Path('./prompts')
-
     TEST_IMGS_PATH = DATA_PATH / "test/hull_defects_imgs"
-    TEST_DIRS = ['corrosion', 'crack']
+    TEST_DIRS = ['corrosion', 'crack', 'dent', 'blister', 'delamination']
     TEST_IMGS_INFO = DATA_PATH / "test/test_image_retrieval.json"
+    RESULTS_FILE = DATA_PATH / f"test/test_results/{RESULTS_FILE_INDEX}.json"
 
     # CLIP model for both text & hull_defects_imgs
-    clip_model = SentenceTransformer("clip-ViT-L-14")
+    embedding_model_1 = SentenceTransformerEmbeddings(model_name="clip-ViT-L-14")
+    embedding_model_2 = OpenCipEmbeddings(model_name='ViT-H-14',
+                                          pretrained='laion2b_s32b_b79k',
+                                          device='cpu')
 
     chromadb_wrapper = ChromaDBHttpWrapper(host='0.0.0.0', port=8003)
 
     # read the test images
     test_queries = read_json(TEST_IMGS_INFO)
     print("Loaded test images...")
+
+    total_results_label = {
+        'embedding_model': "OpenCipEmbeddings(model_name= 'ViT-H-14',pretrained= 'laion2b_s32b_b79k', device='cpu')",
+        'n_results': N_TOP_RESULTS,
+        'normalized': True,
+        'retrieval_strategy': {
+            'name': 'RRF',
+            'top_n': N_TOP_RESULTS,
+            'n_fetched_docs': N_DOCS_FOR_RETRIEVE,
+            'smooth_constant': SMOOTH_CONSTANT
+        },
+        'label_result': {}
+    }
 
     for label in test_queries:
         print(f"For label {label} found {len(test_queries[label])} images")
@@ -135,13 +244,20 @@ if __name__ == '__main__':
             img_path = TEST_IMGS_PATH / f'{label}/{img['img']}'
 
             # read the image and create the embeddings
-            # load the image
-            image = Image.open(img_path)
-            img_embedding = normalize(clip_model.encode(image))
+            img_embedding_1 = embedding_model_1.embed_image(img_path)
+            image_results_1 = chromadb_wrapper.query(repository_name="defects_images_clip_ViT_L_14",
+                                                     query_embeddings=img_embedding_1,
+                                                     n_results=N_DOCS_FOR_RETRIEVE)
 
-            image_results = chromadb_wrapper.query(repository_name="defects_images",
-                                                   query_embeddings=img_embedding,
-                                                   n_results=5)
+            img_embedding_2 = embedding_model_2.embed_image(img_path)
+            image_results_2 = chromadb_wrapper.query(repository_name="defects_images_openclip",
+                                                     query_embeddings=img_embedding_2,
+                                                     n_results=N_DOCS_FOR_RETRIEVE)
+
+            image_results = reciprocal_rank_fusion(results_list=[image_results_1, image_results_2],
+                                                   k=SMOOTH_CONSTANT, top_n=N_TOP_RESULTS)
+
+            #print(image_results)
 
             # from the results we got from the query which images have
             # have the same label?
@@ -152,16 +268,23 @@ if __name__ == '__main__':
             results[img['img']] = {
                 'label': label,
                 'retrieve_result': [],
-                'embedding_model': 'SentenceTransformer("clip-ViT-L-14")',
-                'n_results': 5,
-                'normalized': True
             }
             for rslt_label, rslt_dist in zip(metadatas, distances):
                 results[img['img']]['retrieve_result'].append((rslt_label['defect_label'], rslt_dist))
 
-        precision_at_k(results=results, ground_truth_label=label, k=N_RESULTS)
-        recall_at_k(results=results, ground_truth_label=label,
-                    k=N_RESULTS, ground_truth_set_size=len(label_images))
+        precision_dict = precision_at_k(results=results, ground_truth_label=label, k=N_TOP_RESULTS)
+        recall_dict = recall_at_k(results=results, ground_truth_label=label,
+                                  k=N_TOP_RESULTS, ground_truth_set_size=len(label_images))
 
-        mean_reciprocal_rank(results=results, ground_truth_label=label)
-        ndcg_at_k(results=results, ground_truth_label=label, k=N_RESULTS)
+        mrr = mean_reciprocal_rank(results=results, ground_truth_label=label)
+        ndcg_dict = ndcg_at_k(results=results, ground_truth_label=label, k=N_TOP_RESULTS)
+
+        total_results_label['label_result'][label] = {
+            'precision': precision_dict,
+            'recall': recall_dict,
+            'mrr': mrr,
+            'ndcg': ndcg_dict,
+            'results': results
+        }
+
+    write_json(total_results_label, RESULTS_FILE)

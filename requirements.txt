@@ -1,1 +1,6 @@
 chromadb
+open_clip_torch
+torch
+pillow
+sentence_transformers
+numpy

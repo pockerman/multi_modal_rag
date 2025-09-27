@@ -207,20 +207,147 @@
 				{
 					"variant":"steel",
 					"severity":"moderate",
-					"source": "crack/steel/moderate/2.jpeg",
-					"description": "Fatigue crack on a metal frame"
+					"source": "crack/steel/severe/2.jpg",
+					"description": "Fatigue crack on a metal rod"
 				},
 				{
 					"variant":"steel",
-					"severity":"minor",
-					"source": "crack/steel/minor/2.jpeg",
-					"description": "Minor  crack on gel-coat"
+					"severity":"moderate",
+					"source": "crack/steel/moderate/2.jpeg",
+					"description": "Fatigue crack on a metal frame"
 				},
+
 				{
 					"variant":"fiberglass",
 					"severity":"moderate",
 					"source": "crack/fiberglass/moderate/4.png",
 					"description": "Cracks on gel-coat. The spider like shape of the cracks may also imply delamination of the gel-coat"
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"moderate",
+					"source": "crack/fiberglass/moderate/7.jpeg",
+					"description": "Moderate crack on gel-coat plate"
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"minor",
+					"source": "crack/fiberglass/minor/2.jpg",
+					"description": "Minor crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"minor",
+					"source": "crack/fiberglass/minor/3.jpg",
+					"description": "Minor crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"minor",
+					"source": "crack/fiberglass/minor/4.jpg",
+					"description": "Minor crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"minor",
+					"source": "crack/fiberglass/minor/5.jpg",
+					"description": "Minor crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"minor",
+					"source": "crack/fiberglass/minor/6.jpeg",
+					"description": "A minor single-line gelcoat crack."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"moderate",
+					"source": "crack/fiberglass/moderate/1.jpg",
+					"description": "Moderate cracks on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"moderate",
+					"source": "crack/fiberglass/moderate/2.jpg",
+					"description": "Moderate crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"moderate",
+					"source": "crack/fiberglass/moderate/3.jpg",
+					"description": "Spider-like cracks on gel-coat. The spider like shape of the cracks may also imply delamination of the gel-coat"
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"moderate",
+					"source": "crack/fiberglass/moderate/4.png",
+					"description": "Moderate crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"moderate",
+					"source": "crack/fiberglass/moderate/7.jpeg",
+					"description": "Moderate crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/1.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/2.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/3.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/4.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/5.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/6.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/7.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/8.jpg",
+					"description": "Severe crack on gel-coat."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/9.jpeg",
+					"description": "Short, random cracks are called crazing."
+				},
+				{
+					"variant":"fiberglass",
+					"severity":"severe",
+					"source": "crack/fiberglass/severe/10.jpeg",
+					"description": "Short, random cracks are called crazing."
 				}
 			]
 	    },
@@ -1450,7 +1577,7 @@
 					"severity": "minor",
 	    			"source": "crack/fiberglass/minor/1.png",
 	    			"description": "A spider-crack formation that possibly implies  delamination of the fiberglass.",
-	    			"refs": "FYS_SURVEY_REPORT_SAGA-29_issue_1 (1).pdf"
+	    			"refs": "world-wide-web"
 	    		},
 	    		{
 					"variant": "fiberglass",
@@ -1489,6 +1616,33 @@
 		{
 			"label": "corrosion",
 			"link": "https://partsvu.com/blogs/boating-resources/marine-corrosion-corrosion-types-and-what-to-do-about-them"
+		},
+		{
+			"label": "blister",
+			"link": "https://www.boatingvalley.com/boat-blisters-are-boat-blisters-a-problem-effects-preventions/"
+		},
+		{
+			"label": "blister",
+			"link": "https://essexandsuffolkboatrepairs.co.uk/how-to-identify-and-repair-fibreglass-hull-blisters/"
+		},
+		{
+			"label":"delamination",
+			"link": "https://sailingmagazine.net/article-2218-delamination-repair.html"
+		},
+		{
+			"label":"crack",
+			"link": "https://boatsmartz.com/blogs/news/the-complete-guide-to-fixing-hairline-cracks-in-your-boats-gelcoat"
+		},
+		{
+			"label": "crack",
+			"link": "https://www.epoxyworks.com/repairing-gelcoat-cracks/"
+		}
+	],
+	"faqs": [
+
+		{
+			"q": "what is fiberglass delamination?",
+			"a": "Fiberglass delamination is the separation of layers within a fiberglass structure, where the fiberglass cloth and resin, or the resin and the core material in a sandwich construction, lose their bond.\n This separation weakens the structural integrity of the material and can occur due to moisture intrusion, poor manufacturing techniques, physical impact, or prolonged exposure to environmental stressors like UV radiation and temperature fluctuations.\n Water is a leading cause, as it can penetrate cracks or unsealed seams, dissolve adhesives, and lead to the layers detaching from one another.\n Delamination can be detected through methods like tapping the surface with a plastic mallet—healthy laminate produces a sharp sound, while delaminated areas produce a dull thud—and by feeling for soft spots, especially on horizontal surfaces like decks."
 		}
 	]
 }

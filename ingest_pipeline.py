@@ -1,4 +1,4 @@
-from sentence_transformers import SentenceTransformer
+
 import uuid
 from typing import Callable
 from pathlib import Path
@@ -9,6 +9,8 @@ import json
 from src.utils import read_json
 from src.db_models import ImageModel, DefectTextModel
 from src.chromadb_wrapper import ChromaDBHttpWrapper
+from src.openclip_embedding import OpenCipEmbeddings
+from src.sentence_transformer_embedding import SentenceTransformerEmbeddings
 
 
 def normalize(v):
@@ -39,10 +41,8 @@ def embed_text(text_db_model: DefectTextModel, chroma_db: ChromaDBHttpWrapper, r
     stringify_recommendations = json.dumps(text_db_model.recommendations)
 
     text_metadata = {
-
         'recommendations': stringify_recommendations,
         'label': text_db_model.defect_label
-
     }
     documents = [text_db_model.text_description]
     chroma_db.add(repository_name=repository_name,
@@ -260,7 +260,7 @@ def create_faqs(defects: list[dict], faqs_repo: str, chroma_db: ChromaDBHttpWrap
 if __name__ == '__main__':
 
     FAQS_REPO: str = 'faqs_repo'
-    IMAGES_REPO: str = 'defects_images'
+    IMAGES_REPO: str = 'defects_images_clip_ViT_L_14'
     DEFECTS_REPO_TEXT: str = 'defects_texts'
 
     DATA_PATH = Path('./data')
@@ -269,22 +269,23 @@ if __name__ == '__main__':
     hull_defects = read_json(DATA_PATH / "hull_defects_short.json")
     chromadb_wrapper = ChromaDBHttpWrapper(host='0.0.0.0', port=8003)
 
-    chromadb_wrapper.delete_collection(FAQS_REPO)
+    # chromadb_wrapper.delete_collection(FAQS_REPO)
     chromadb_wrapper.delete_collection(IMAGES_REPO)
-    chromadb_wrapper.delete_collection(DEFECTS_REPO_TEXT)
+    # chromadb_wrapper.delete_collection(DEFECTS_REPO_TEXT)
 
-    chromadb_wrapper.create_collection(FAQS_REPO)
+    #chromadb_wrapper.create_collection(FAQS_REPO)
     chromadb_wrapper.create_collection(IMAGES_REPO)
-    chromadb_wrapper.create_collection(DEFECTS_REPO_TEXT)
+    #chromadb_wrapper.create_collection(DEFECTS_REPO_TEXT)
 
     # CLIP model for both text & hull_defects_imgs
-    clip_model = SentenceTransformer("clip-ViT-L-14")
+    clip_model = SentenceTransformerEmbeddings(model_name="clip-ViT-L-14")
+    #clip_model = OpenCipEmbeddings(device='cpu')
 
     # access all the defects
     defects = hull_defects['defects']
 
-    create_faqs(defects=defects, faqs_repo=FAQS_REPO,
-                chroma_db=chromadb_wrapper, text_encoder=clip_model)
+    # create_faqs(defects=defects, faqs_repo=FAQS_REPO,
+    #             chroma_db=chromadb_wrapper, text_encoder=clip_model)
 
     # get the directories for hull_defects_imgs
     dirs = os.listdir(IMAGES_PATH)
@@ -302,18 +303,17 @@ if __name__ == '__main__':
             print(f'No defect_info found for {label} embedding just the text')
 
             # if we have no image we will just embed the text
-            defect_model = DefectTextModel.create_from(data=defect, text_encoder=clip_model,
-                                                       normalize=normalize)
+            # defect_model = DefectTextModel.create_from(data=defect, text_encoder=clip_model,
+            #                                            normalize=normalize)
 
             # just embed the text
-            embed_text(defect_model, chroma_db=chromadb_wrapper, repository_name=DEFECTS_REPO_TEXT, )
+            #embed_text(defect_model, chroma_db=chromadb_wrapper, repository_name=DEFECTS_REPO_TEXT, )
             continue
 
         synonyms = defect['synonyms']
         material = defect['material']
         defect_description = defect['description']
-
-        images = defect['hull_defects_imgs']
+        images = defect['images']
 
         if images:
 
@@ -341,5 +341,5 @@ if __name__ == '__main__':
                 image_ids.append(img_id)
             # we need to associate the image with a description of the defect
             defect['id'] = ";".join(image_ids)
-            text_db_model = DefectTextModel.create_from(data=defect, text_encoder=clip_model, normalize=normalize)
-            embed_text(text_db_model=text_db_model, chroma_db=chromadb_wrapper, repository_name=DEFECTS_REPO_TEXT)
+            #text_db_model = DefectTextModel.create_from(data=defect, text_encoder=clip_model, normalize=normalize)
+            #embed_text(text_db_model=text_db_model, chroma_db=chromadb_wrapper, repository_name=DEFECTS_REPO_TEXT)

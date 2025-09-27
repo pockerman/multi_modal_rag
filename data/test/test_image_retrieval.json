@@ -42,8 +42,393 @@
       "description": "extensive corrosion on the propeller of a vessel.",
       "severity": "severe",
       "refs": "world-wide-web"
+    },
+    {
+      "img": "8.jpg",
+      "description": "minor corrosion on a metallic plate.",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "9.jpg",
+      "description": "moderate corrosion on a metallic plate.",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "10.jpg",
+      "description": "moderate corrosion on a metallic plate.",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "11.jpg",
+      "description": "extensive corrosion on a wheel frame.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "12.jpg",
+      "description": "extensive corrosion on a steel rod.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "13.jpg",
+      "description": "extensive corrosion on a steel frame.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "14.jpg",
+      "description": "extensive corrosion on a steel plate.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "15.jpg",
+      "description": "extensive corrosion on a steel chain.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "16.jpg",
+      "description": "moderate corrosion on a steel plate.",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "17.jpg",
+      "description": "extensive corrosion on a steel plate.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+      {
+      "img": "18.jpg",
+      "description": "extensive corrosion on a steel plate.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "19.jpg",
+      "description": "extensive corrosion on a steel plate.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "20.jpg",
+      "description": "extensive corrosion on a steel plate.",
+      "severity": "sever",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "21.jpg",
+      "description": "extensive corrosion on a steel plate.",
+      "severity": "sever",
+      "refs": "world-wide-web"
     }
-
+  ],
+  "crack": [
+    {
+      "img": "1.jpg",
+      "description": "A deep crack on fiberglass",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "2.jpg",
+      "description": "A shallow crack on fiberglass",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "3.png",
+      "description": "Spider crack on fiberglass",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "4.jpg",
+      "description": "Severe crack on a fiberglass plate",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "5.jpg",
+      "description": "Severe crack on a fiberglass plate",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "6.jpg",
+      "description": "Moderate crack on a fiberglass plate",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "7.jpg",
+      "description": "Moderate crack on a fiberglass plate",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "8.jpg",
+      "description": "Minor crack on a fiberglass plate",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "9.jpg",
+      "description": "Major crack on a fiberglass plate",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "10.jpg",
+      "description": "Minor crack on a fiberglass plate",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "11.jpg",
+      "description": "Major crack on a fiberglass plate",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "12.jpg",
+      "description": "Major crack on a fiberglass plate",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "13.jpg",
+      "description": "Major crack on a fiberglass plate",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "14.jpg",
+      "description": "Major crack on a fiberglass plate",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "15.jpg",
+      "description": "Moderate crack on a fiberglass plate",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "16.jpg",
+      "description": "Moderate crack on a fiberglass plate",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "17.jpeg",
+      "description": "Hair-like  crack on a fiberglass plate",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "18.jpeg",
+      "description": "Hair-like  crack on a fiberglass plate",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "19.jpeg",
+      "description": "Hair-like  crack along the hatch of a boat",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "20.jpeg",
+      "description": "Hairline cracks in gelcoat around windows and portholes.",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "21.jpeg",
+      "description": "Hairline crack around cubby in cockpit of boat.",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "23.jpg",
+      "description": "Spider cracks on gel-coat.",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "24.jpg",
+      "description": "Spider cracks on gel-coat.",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "25.jpg",
+      "description": "Spider cracks on gel-coat.",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    }
+  ],
+  "dent": [
+    {
+      "img": "0.png",
+      "description": "Minor dent on a steel boat  hull",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "1.png",
+      "description": "Minor dent on a steel boat  hull",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "2.png",
+      "description": "Minor dent on a steel boat  hull",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "3.png",
+      "description": "Minor dent on a steel boat  hull",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "4.png",
+      "description": "Moderate dent on a steel boat  hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "5.png",
+      "description": "Moderate dent on a steel boat  hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "6.png",
+      "description": "Moderate dent on a steel boat  hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "7.png",
+      "description": "Moderate dent on a steel boat  hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "8.png",
+      "description": "Severe dent on a steel boat  hull",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+      {
+      "img": "9.png",
+      "description": "Severe dent on a steel boat  hull",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+      {
+      "img": "10.png",
+      "description": "Severe dent on a steel boat  hull",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "11.png",
+      "description": "Severe dent on a steel boat  hull",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    }
+  ],
+  "blister": [
+     {
+      "img": "0.jpeg",
+      "description": "Small mono-hull vessel with severe blistering",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "1.jpeg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "severe",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "2.jpg",
+      "description": "View of hull maintenance with blisters",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "3.jpeg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "minor",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "4.jpg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "5.jpg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "6.jpg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "7.jpg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "8.jpg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "9.jpg",
+      "description": "Close up view of blisters on a vessel hull",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    }
+  ],
+  "delamination": [
+    {
+      "img": "0.jpeg",
+      "description": "Spider-like crack on fiberglass plate",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+    {
+      "img": "1.jpeg",
+      "description": "Spider crack on interior deck area of boat.",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    },
+     {
+      "img": "2.jpeg",
+      "description": "Spider crack on gel-coat.",
+      "severity": "moderate",
+      "refs": "world-wide-web"
+    }
   ]
 
 }
