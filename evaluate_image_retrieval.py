@@ -183,8 +183,8 @@ def reciprocal_rank_fusion(results_list, k=60, top_n=5):
 if __name__ == '__main__':
     N_TOP_RESULTS = 5
     N_DOCS_FOR_RETRIEVE = 5
-    SMOOTH_CONSTANT = 15
-    RESULTS_FILE_INDEX = 11
+    SMOOTH_CONSTANT = 60
+    RESULTS_FILE_INDEX = 12
 
     DATA_PATH = Path('./data')
     TEST_IMGS_PATH = DATA_PATH / "test/hull_defects_imgs"
@@ -222,6 +222,15 @@ if __name__ == '__main__':
         print(f"For label {label} found {len(test_queries[label])} images")
         label_images = test_queries[label]
         results = {}
+
+        where = None
+        if label == 'corrosion':
+            where = {'hull_material': 'steel'}
+        elif label == 'blister':
+            where = {'hull_material': 'fiberglass'}
+        else:
+            where = None
+
         for img in label_images:
             img_path = TEST_IMGS_PATH / f'{label}/{img['img']}'
 
@@ -231,7 +240,8 @@ if __name__ == '__main__':
                 img_embedding = embedder.embed_image(img_path)
                 image_search_results = chromadb_wrapper.query(repository_name=chroma_db_repo,
                                                               query_embeddings=img_embedding,
-                                                              n_results=N_DOCS_FOR_RETRIEVE)
+                                                              n_results=N_DOCS_FOR_RETRIEVE,
+                                                              where=where)
 
                 image_results.append(image_search_results)
 

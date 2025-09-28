@@ -25,8 +25,15 @@ class ChromaDBHttpWrapper:
                        embeddings=embeddings, metadatas=metadatas, documents=documents)
         return self
 
-    def query(self, repository_name: str, n_results: int, query_embeddings: list[float]) -> Any:
+    def query(self, repository_name: str, n_results: int, query_embeddings: list[float],
+              where: Optional[dict] = None) -> Any:
+
         collection = self._chroma_client.get_collection(repository_name)
+
+        if where:
+            return collection.query(query_embeddings=query_embeddings,
+                                    n_results=n_results,
+                                    where=where)
         return collection.query(query_embeddings=query_embeddings,
                                 n_results=n_results)
 
