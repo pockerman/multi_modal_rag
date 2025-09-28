@@ -1,6 +1,8 @@
 chromadb
-open_clip_torch
-torch
-pillow
-sentence_transformers
 numpy
+open_clip_torch
+pillow
+sentencepiece
+sentencepiece
+transformers
+torch

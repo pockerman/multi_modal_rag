@@ -260,7 +260,8 @@ def create_faqs(defects: list[dict], faqs_repo: str, chroma_db: ChromaDBHttpWrap
 if __name__ == '__main__':
 
     FAQS_REPO: str = 'faqs_repo'
-    IMAGES_REPO: str = 'defects_images_clip_ViT_L_14'
+    #IMAGES_REPO: str = 'defects_images_clip_ViT_L_14'
+    IMAGES_REPO: str = 'defects_images_openclip'
     DEFECTS_REPO_TEXT: str = 'defects_texts'
 
     DATA_PATH = Path('./data')
@@ -278,8 +279,8 @@ if __name__ == '__main__':
     #chromadb_wrapper.create_collection(DEFECTS_REPO_TEXT)
 
     # CLIP model for both text & hull_defects_imgs
-    clip_model = SentenceTransformerEmbeddings(model_name="clip-ViT-L-14")
-    #clip_model = OpenCipEmbeddings(device='cpu')
+    #clip_model = SentenceTransformerEmbeddings(model_name="clip-ViT-L-14")
+    clip_model = OpenCipEmbeddings(device='cpu')
 
     # access all the defects
     defects = hull_defects['defects']

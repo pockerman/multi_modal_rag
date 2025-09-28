@@ -429,6 +429,98 @@
       "severity": "moderate",
       "refs": "world-wide-web"
     }
+  ],
+  "buckling": [
+    {
+      "img": "0.png",
+      "description": "Close up  of minor buckling on steel hull",
+      "severity": "minor",
+      "refs": "synthetic"
+    },
+     {
+      "img": "2.png",
+      "description": "Close up  of minor buckling on steel hull",
+      "severity": "minor",
+      "refs": "synthetic"
+    },
+     {
+      "img": "3.png",
+      "description": "Close up  of minor buckling on steel hull",
+      "severity": "minor",
+      "refs": "synthetic"
+    },
+    {
+      "img": "4.png",
+      "description": "Side view of moderate buckling on steel hull",
+      "severity": "moderate",
+      "refs": "synthetic"
+    },
+    {
+      "img": "5.png",
+      "description": "Side view of moderate buckling on steel hull",
+      "severity": "moderate",
+      "refs": "synthetic"
+    },
+    {
+      "img": "6.png",
+      "description": "Side view of moderate buckling on steel hull",
+      "severity": "moderate",
+      "refs": "synthetic"
+    },
+    {
+      "img": "7.png",
+      "description": "Side view of moderate buckling on steel hull",
+      "severity": "moderate",
+      "refs": "synthetic"
+    },
+    {
+      "img": "8.png",
+      "description": "Side view of severe buckling on steel hull",
+      "severity": "severe",
+      "refs": "synthetic"
+    },
+    {
+      "img": "9.png",
+      "description": "Side view of severe buckling on steel hull",
+      "severity": "severe",
+      "refs": "synthetic"
+    },
+    {
+      "img": "10.png",
+      "description": "Side view of severe buckling on steel hull",
+      "severity": "severe",
+      "refs": "synthetic"
+    },
+    {
+      "img": "11.png",
+      "description": "Side view of severe buckling on steel hull",
+      "severity": "severe",
+      "refs": "synthetic"
+    },
+    {
+      "img": "12.png",
+      "description": "Close up view of minor buckling on fiberglass hull",
+      "severity": "minor",
+      "refs": "synthetic"
+    },
+    {
+      "img": "13.png",
+      "description": "Close up view of minor buckling on fiberglass hull",
+      "severity": "minor",
+      "refs": "synthetic"
+    },
+    {
+      "img": "14.png",
+      "description": "Close up view of minor buckling on fiberglass hull",
+      "severity": "minor",
+      "refs": "synthetic"
+    },
+    {
+      "img": "15.png",
+      "description": "Close up view of minor buckling on fiberglass hull",
+      "severity": "minor",
+      "refs": "synthetic"
+    }
   ]
 
 }

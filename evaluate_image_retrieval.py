@@ -7,6 +7,7 @@ from src.utils import read_json, write_json
 from src.chromadb_wrapper import ChromaDBHttpWrapper
 from src.openclip_embedding import OpenCipEmbeddings
 from src.sentence_transformer_embedding import SentenceTransformerEmbeddings
+from src.siglip_embedding import SigLipEmbeddings
 
 
 def precision_at_k(results: dict[str, dict],
@@ -24,7 +25,9 @@ def precision_at_k(results: dict[str, dict],
         retrieve_result = results[img]['retrieve_result']
         relevant = sum(1 for r in retrieve_result if r[0] == ground_truth_label)
         precision_dict[img] = relevant / k
-        print(f'Precision@{k} for image={img} is {relevant / k:0.2f}')
+        #print(f'Precision@{k} for image={img} is {relevant / k:0.2f}')
+
+    print(f'Average Precision@{k} {sum(list(precision_dict.values()))/len(list(precision_dict.values()))}')
     return precision_dict
 
 
@@ -44,7 +47,9 @@ def recall_at_k(results: dict[str, dict], ground_truth_label: str,
         retrieve_result = results[img]['retrieve_result']
         relevant = sum(1 for r in retrieve_result if r[0] == ground_truth_label)
         recall_dict[img] = relevant / float(ground_truth_set_size)
-        print(f'Recall@{k} for image={img} is {relevant / float(ground_truth_set_size):0.2f}')
+        #print(f'Recall@{k} for image={img} is {relevant / float(ground_truth_set_size):0.2f}')
+
+    print(f'Average Recall@{k} {sum(list(recall_dict.values())) / len(list(recall_dict.values()))}')
     return recall_dict
 
 
@@ -107,35 +112,11 @@ def ndcg_at_k(results: dict[str, dict], ground_truth_label: str, k: int):
         # Ideal DCG: sort relevances in descending order
         idcg = dcg_at_k(sorted(relevances, reverse=True), k)
         img_ndcg = dcg / idcg if idcg > 0 else 0.0
-        print(f'nDCG@{k} for image={img} is {img_ndcg} ')
+        #print(f'nDCG@{k} for image={img} is {img_ndcg} ')
         ndcg_dict[img] = img_ndcg
+
+    print(f'Average nDCG@{k} {sum(list(ndcg_dict.values())) / len(list(ndcg_dict.values()))}')
     return ndcg_dict
-
-
-# def reciprocal_rank_fusion(results_list, k: int, top_n: int):
-#     """
-#     Perform Reciprocal Rank Fusion (RRF).
-#
-#     Args:
-#         results_list: list of ranked result lists from different retrievers.
-#                       Each list contains document IDs in order of relevance.
-#         k: smoothing constant
-#         top_n: number of final results to return
-#
-#     Returns:
-#         List of (doc_id, rrf_score) sorted by score.
-#     """
-#     scores = defaultdict(float)
-#
-#     for result in results_list:
-#         for rank, doc_id in enumerate(result, start=1):
-#             scores[doc_id] += 1.0 / (k + rank)
-#
-#     # Sort by score (descending) and return top_n
-#     fused_results = sorted(scores.items(), key=lambda x: x[1], reverse=True)[:top_n]
-#     return fused_results
-
-#from collections import defaultdict
 
 
 def reciprocal_rank_fusion(results_list, k=60, top_n=5):
@@ -202,29 +183,30 @@ def reciprocal_rank_fusion(results_list, k=60, top_n=5):
 if __name__ == '__main__':
     N_TOP_RESULTS = 5
     N_DOCS_FOR_RETRIEVE = 5
-    SMOOTH_CONSTANT = 60
-    RESULTS_FILE_INDEX = 8
+    SMOOTH_CONSTANT = 15
+    RESULTS_FILE_INDEX = 11
 
     DATA_PATH = Path('./data')
     TEST_IMGS_PATH = DATA_PATH / "test/hull_defects_imgs"
-    TEST_DIRS = ['corrosion', 'crack', 'dent', 'blister', 'delamination']
+    TEST_DIRS = ['corrosion', 'crack', 'dent', 'blister', 'delamination', 'buckling']
     TEST_IMGS_INFO = DATA_PATH / "test/test_image_retrieval.json"
     RESULTS_FILE = DATA_PATH / f"test/test_results/{RESULTS_FILE_INDEX}.json"
 
-    # CLIP model for both text & hull_defects_imgs
-    embedding_model_1 = SentenceTransformerEmbeddings(model_name="clip-ViT-L-14")
-    embedding_model_2 = OpenCipEmbeddings(model_name='ViT-H-14',
-                                          pretrained='laion2b_s32b_b79k',
-                                          device='cpu')
-
     chromadb_wrapper = ChromaDBHttpWrapper(host='0.0.0.0', port=8003)
+
+    embeders = [OpenCipEmbeddings(device='cpu'),
+                SentenceTransformerEmbeddings(model_name="clip-ViT-L-14"),
+                SigLipEmbeddings(model_name="google/siglip-base-patch16-224")]
+
+    chroma_db_repos = ['defects_images_' + embeder.embedder_id
+                       for embeder in embeders]
 
     # read the test images
     test_queries = read_json(TEST_IMGS_INFO)
     print("Loaded test images...")
 
     total_results_label = {
-        'embedding_model': "OpenCipEmbeddings(model_name= 'ViT-H-14',pretrained= 'laion2b_s32b_b79k', device='cpu')",
+        'embedding_models': [embeder.embedder_id for embeder in embeders],
         'n_results': N_TOP_RESULTS,
         'normalized': True,
         'retrieval_strategy': {
@@ -243,21 +225,20 @@ if __name__ == '__main__':
         for img in label_images:
             img_path = TEST_IMGS_PATH / f'{label}/{img['img']}'
 
-            # read the image and create the embeddings
-            img_embedding_1 = embedding_model_1.embed_image(img_path)
-            image_results_1 = chromadb_wrapper.query(repository_name="defects_images_clip_ViT_L_14",
-                                                     query_embeddings=img_embedding_1,
-                                                     n_results=N_DOCS_FOR_RETRIEVE)
+            image_results = []
+            for chroma_db_repo, embedder in zip(chroma_db_repos, embeders):
+                # read the image and create the embeddings
+                img_embedding = embedder.embed_image(img_path)
+                image_search_results = chromadb_wrapper.query(repository_name=chroma_db_repo,
+                                                              query_embeddings=img_embedding,
+                                                              n_results=N_DOCS_FOR_RETRIEVE)
 
-            img_embedding_2 = embedding_model_2.embed_image(img_path)
-            image_results_2 = chromadb_wrapper.query(repository_name="defects_images_openclip",
-                                                     query_embeddings=img_embedding_2,
-                                                     n_results=N_DOCS_FOR_RETRIEVE)
+                image_results.append(image_search_results)
 
-            image_results = reciprocal_rank_fusion(results_list=[image_results_1, image_results_2],
+            image_results = reciprocal_rank_fusion(results_list=image_results,
                                                    k=SMOOTH_CONSTANT, top_n=N_TOP_RESULTS)
 
-            #print(image_results)
+            # print(image_results)
 
             # from the results we got from the query which images have
             # have the same label?

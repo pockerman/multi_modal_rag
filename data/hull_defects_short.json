@@ -1050,19 +1050,7 @@
 	    			"severity":"severe",
 	    			"source": "gash/steel/severe/1.jpg",
 	    			"description": "A steel boat hull with severe gash.",
-	    			"refs":{
-	    				"source": "stable-diffusion",
-	    				"input": {
-	    				    "base_description": "A gash is a large tear or cut in the hull plating, typically caused by a sharp object or a significant collision.",
-            				"prompt": "Steel ship hull with a large severe gash penetrating through the plating, exposing internal frames. {base_description} The damage is extensive, jagged, and clearly from a major collision. Realistic marine photography, shipyard inspection angle.",
-				            "width": 768,
-				            "height": 512,
-				            "num_outputs": 2,  
-				            "scheduler": "K_EULER",
-				            "guidance_scale": 7.5,
-				            "num_inference_steps": 50
-                        }
-	    			}
+	    			"refs":"world-wide-web"
 	    		},
 	    		{
 	    			"variant":"steel",
@@ -1101,8 +1089,29 @@
 				            "num_inference_steps": 50
                         }
 	    			}
+	    		},
+				{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "gash/steel/severe/4.png",
+	    			"description": "A steel boat hull with severe gash.",
+	    			"refs":"world-wide-web"
+	    		},
+				{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "gash/steel/severe/5.png",
+	    			"description": "A steel boat hull with severe gash.",
+	    			"refs":"world-wide-web"
+	    		},
+				{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "gash/steel/severe/6.png",
+	    			"description": "A steel boat hull with severe gash.",
+	    			"refs":"world-wide-web"
 	    		}
-	    	]
+			]
 	    },
 	    {
 			"label":"buckling",
@@ -1305,6 +1314,13 @@
 				            "num_inference_steps": 50
                         }
 	    			}
+	    		},
+				{
+	    			"variant":"steel",
+	    			"severity":"severe",
+	    			"source": "buckling/steel/severe/2.jpeg",
+	    			"description": "Shell plate buckling eyed in box ship break-up",
+	    			"refs":"world-wide-web"
 	    		},
 	    		{
 	    			"variant":"fiberglass",

@@ -14,7 +14,7 @@ class ImageModel(BaseModel):
     severity: str = "INVALID"
 
     @staticmethod
-    def create_from(data: dict, image_encoder, *, to_rgb: bool = True, normalize: Callable = None) -> "ImageModel":
+    def create_from(data: dict, image_encoder) -> "ImageModel":
         img_id = uuid.uuid4().hex
         defect_label = data["label"]
         hull_material = data['variant']
